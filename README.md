@@ -1,4 +1,4 @@
-Este proyecto es un simulador de gestión y estrategia desarrollado en Godot 4.6, desarrollado por Carlos Nava Rodríguez y César Iván Nava Topete como proyecto final de la Materia de Pragramacion 3D impartido por el Profesor Jose Luis David Bonilla Carranza de la Universidad de Guadalajara en el Centro Universitario de Ciencias Exactas e Ingenierías. El jugador asume el rol de dueño de una tienda minorista llamada OXCO, donde el objetivo principal es maximizar las ganancias diarias mientras se gestionan diversos factores críticos: atención al cliente, mantenimiento de instalaciones, pago de servicios (luz, agua, renta) y la reputación del establecimiento. El juego destaca por su sistema de resultados dinámico, donde cada acción del jugador (como descuidar la limpieza o tardar en atender) se traduce en penalizaciones financieras reales reflejadas en un ticket de cierre de jornada.
+El jugador asume el rol de dueño de una tienda minorista llamada OXCO, donde el objetivo principal es maximizar las ganancias diarias mientras se gestionan diversos factores críticos: atención al cliente, mantenimiento de instalaciones, pago de servicios (luz, agua, renta) y la reputación del establecimiento. El juego destaca por su sistema de resultados dinámico, donde cada acción del jugador (como descuidar la limpieza o tardar en atender) se traduce en penalizaciones financieras reales reflejadas en un ticket de cierre de jornada.
 
 Con una jornada de 12 horas (08:00 - 20:00), ¿Podras Mantener el tu Negocio?
 
@@ -57,6 +57,10 @@ Motor de Desarrollo: Godot Engine 4.6 (GDScript).
 
 
 **Creditos:**
+
+*Datos*
+
+Este proyecto es un simulador de gestión y estrategia desarrollado en Godot 4.6, desarrollado por Carlos Nava Rodríguez y César Iván Nava Topete como proyecto final de la Materia de Pragramacion 3D impartido por el Profesor Jose Luis David Bonilla Carranza de la Universidad de Guadalajara en el Centro Universitario de Ciencias Exactas e Ingenierías. 
 
 *Musica y SFX*
 
