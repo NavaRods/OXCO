@@ -46,8 +46,7 @@ Motor de Desarrollo: Godot Engine 4.6 (GDScript).
 
 **Imagenes del Juego**
 
-
-<video src="https://www.youtube.com/watch?v=IkbZFVv3Lyw" width="80%" controls></video>
+[![](https://markdown-videos.deta.dev/youtube/IkbZFVv3Lyw&t)](https://youtu.be/IkbZFVv3Lyw)
 <img width="1254" height="1254" alt="Logo OXCO" src="https://github.com/user-attachments/assets/37776d93-9d95-4191-9beb-5ea65dd5da31" />
 <img width="794" height="797" alt="image" src="https://github.com/user-attachments/assets/97e2b7f3-b058-48f0-835f-03de1dcb8df4" />
 <img width="791" height="792" alt="image" src="https://github.com/user-attachments/assets/d3b41ab3-d5c7-4afc-8ed4-421e7b7ff35d" />
