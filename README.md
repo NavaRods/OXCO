@@ -6,6 +6,10 @@ Desarrolado por:
 - Carlos Nava Rodríguez
 - César Iván Nava Topete
 
+**Pagina de Itchio**
+
+https://cesarnava1603.itch.io/oxco?secret=4xUTarVVDutMHKMXA7UF570Rw0
+
 El sistema de controles ha sido diseñado para una interaccion fluida y centrada en la gestion de recursos:
 
 | **Acciones** | **Controles** |
