@@ -1,0 +1,205 @@
+[gd_scene format=3 uid="uid://brqvo4cvpyf61"]
+
+[ext_resource type="Texture2D" uid="uid://bvogakqrhs30i" path="res://Sprites/Keyboard Letters and Symbols.png" id="1_cgcv2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdqko"]
+atlas = ExtResource("1_cgcv2")
+region = Rect2(16, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inkom"]
+atlas = ExtResource("1_cgcv2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsnf5"]
+atlas = ExtResource("1_cgcv2")
+region = Rect2(32, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3jrf"]
+atlas = ExtResource("1_cgcv2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdnew"]
+atlas = ExtResource("1_cgcv2")
+region = Rect2(48, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgx6l"]
+atlas = ExtResource("1_cgcv2")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjlws"]
+atlas = ExtResource("1_cgcv2")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txk7v"]
+atlas = ExtResource("1_cgcv2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0o21j"]
+atlas = ExtResource("1_cgcv2")
+region = Rect2(0, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llmyu"]
+atlas = ExtResource("1_cgcv2")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl6tp"]
+atlas = ExtResource("1_cgcv2")
+region = Rect2(48, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7oat"]
+atlas = ExtResource("1_cgcv2")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7k5av"]
+atlas = ExtResource("1_cgcv2")
+region = Rect2(32, 176, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfnee"]
+atlas = ExtResource("1_cgcv2")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a2mf"]
+atlas = ExtResource("1_cgcv2")
+region = Rect2(96, 176, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjwlj"]
+atlas = ExtResource("1_cgcv2")
+region = Rect2(96, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isniv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdqko")
+}],
+"loop": true,
+"name": &"Agua_DOWN_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inkom")
+}],
+"loop": true,
+"name": &"Agua_DOWN_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsnf5")
+}],
+"loop": true,
+"name": &"Agua_LEFT_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3jrf")
+}],
+"loop": true,
+"name": &"Agua_LEFT_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdnew")
+}],
+"loop": true,
+"name": &"Agua_RIGHT_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgx6l")
+}],
+"loop": true,
+"name": &"Agua_RIGHT_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjlws")
+}],
+"loop": true,
+"name": &"Agua_UP_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txk7v")
+}],
+"loop": true,
+"name": &"Agua_UP_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0o21j")
+}],
+"loop": true,
+"name": &"Luz_A_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llmyu")
+}],
+"loop": true,
+"name": &"Luz_A_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl6tp")
+}],
+"loop": true,
+"name": &"Luz_D_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7oat")
+}],
+"loop": true,
+"name": &"Luz_D_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7k5av")
+}],
+"loop": true,
+"name": &"Luz_S_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfnee")
+}],
+"loop": true,
+"name": &"Luz_S_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a2mf")
+}],
+"loop": true,
+"name": &"Luz_W_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjwlj")
+}],
+"loop": true,
+"name": &"Luz_W_up",
+"speed": 5.0
+}]
+
+[node name="TeclasReparacion" type="Node2D" unique_id=1483287210]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=601605899]
+position = Vector2(24, 13)
+sprite_frames = SubResource("SpriteFrames_isniv")
+animation = &"Agua_RIGHT_up"

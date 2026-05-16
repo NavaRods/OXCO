@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://cf7tge6of655u"]
+
+[ext_resource type="Script" uid="uid://2j624jpohv1w" path="res://Scripts/MenuConfiguracion.gd" id="1_8v42v"]
+[ext_resource type="Texture2D" uid="uid://c0vbld6o2gpu" path="res://Resourse/5.png" id="2_meqa2"]
+[ext_resource type="Texture2D" uid="uid://bc8yp3hwtivgk" path="res://Sprites/button UI.png" id="3_0dl80"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2d0y6"]
+texture = ExtResource("3_0dl80")
+region_rect = Rect2(65.05103, 65.04446, 13.902374, 13.84227)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oqrxo"]
+texture = ExtResource("3_0dl80")
+region_rect = Rect2(65.051, 65.044, 13.902, 13.842)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_am0g5"]
+texture = ExtResource("3_0dl80")
+region_rect = Rect2(65.051, 65.044, 13.902, 13.842)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1vrmx"]
+texture = ExtResource("3_0dl80")
+region_rect = Rect2(17.051657, 97.03509, 13.9073715, 13.916077)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wqwrp"]
+texture = ExtResource("3_0dl80")
+region_rect = Rect2(17.052, 97.035, 13.907, 13.916)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q7wtg"]
+texture = ExtResource("3_0dl80")
+region_rect = Rect2(17.052, 97.035, 13.907, 13.916)
+
+[node name="MenuConfiguracion" type="CanvasLayer" unique_id=798338498]
+process_mode = 3
+layer = 100
+script = ExtResource("1_8v42v")
+
+[node name="Panel" type="Panel" parent="." unique_id=1855618672]
+z_index = 20
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel" unique_id=483466235]
+position = Vector2(399, 379.00003)
+scale = Vector2(0.9795342, 1.0160464)
+texture = ExtResource("2_meqa2")
+region_enabled = true
+region_rect = Rect2(205.4978, 70.30003, 593.73035, 378.76697)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1156390714]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -147.0
+offset_right = -20.397156
+offset_bottom = 48.59375
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.1649218, 1.5762125)
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=85692028]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Musica General"
+
+[node name="SliderMaster" type="HSlider" parent="Panel/VBoxContainer" unique_id=448845102]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer" unique_id=1612808]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Musica"
+
+[node name="SliderMusica" type="HSlider" parent="Panel/VBoxContainer" unique_id=1312450972]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="Label3" type="Label" parent="Panel/VBoxContainer" unique_id=185974593]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "SFX"
+
+[node name="SliderSFX" type="HSlider" parent="Panel/VBoxContainer" unique_id=356401812]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="SalirMenu" type="Button" parent="Panel" unique_id=772838249]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 485.0
+offset_right = 362.0
+offset_bottom = 545.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_2d0y6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_oqrxo")
+theme_override_styles/hover = SubResource("StyleBoxTexture_am0g5")
+
+[node name="Replay" type="Button" parent="Panel" unique_id=1780092615]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 485.0
+offset_right = 481.0
+offset_bottom = 545.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_1vrmx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wqwrp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q7wtg")
+
+[connection signal="pressed" from="Panel/SalirMenu" to="." method="_on_salir_menu_pressed"]
+[connection signal="pressed" from="Panel/Replay" to="." method="_on_replay_pressed"]

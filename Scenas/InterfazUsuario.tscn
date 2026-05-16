@@ -1,0 +1,325 @@
+[gd_scene format=3 uid="uid://b4muj07idofeg"]
+
+[ext_resource type="Script" uid="uid://d2psd1ut7yxxq" path="res://Scripts/InterfazUsuario.gd" id="1_ryxhv"]
+[ext_resource type="Texture2D" uid="uid://bvogakqrhs30i" path="res://Sprites/Keyboard Letters and Symbols.png" id="2_x7tnm"]
+
+[sub_resource type="Theme" id="Theme_x7tnm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0o21j"]
+atlas = ExtResource("2_x7tnm")
+region = Rect2(0, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llmyu"]
+atlas = ExtResource("2_x7tnm")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl6tp"]
+atlas = ExtResource("2_x7tnm")
+region = Rect2(48, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7oat"]
+atlas = ExtResource("2_x7tnm")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7k5av"]
+atlas = ExtResource("2_x7tnm")
+region = Rect2(32, 176, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfnee"]
+atlas = ExtResource("2_x7tnm")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a2mf"]
+atlas = ExtResource("2_x7tnm")
+region = Rect2(96, 176, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjwlj"]
+atlas = ExtResource("2_x7tnm")
+region = Rect2(96, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ahqh5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0o21j")
+}],
+"loop": true,
+"name": &"Luz_A_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llmyu")
+}],
+"loop": true,
+"name": &"Luz_A_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl6tp")
+}],
+"loop": true,
+"name": &"Luz_D_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7oat")
+}],
+"loop": true,
+"name": &"Luz_D_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7k5av")
+}],
+"loop": true,
+"name": &"Luz_S_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfnee")
+}],
+"loop": true,
+"name": &"Luz_S_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a2mf")
+}],
+"loop": true,
+"name": &"Luz_W_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjwlj")
+}],
+"loop": true,
+"name": &"Luz_W_up",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdqko"]
+atlas = ExtResource("2_x7tnm")
+region = Rect2(16, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inkom"]
+atlas = ExtResource("2_x7tnm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsnf5"]
+atlas = ExtResource("2_x7tnm")
+region = Rect2(32, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3jrf"]
+atlas = ExtResource("2_x7tnm")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdnew"]
+atlas = ExtResource("2_x7tnm")
+region = Rect2(48, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgx6l"]
+atlas = ExtResource("2_x7tnm")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjlws"]
+atlas = ExtResource("2_x7tnm")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txk7v"]
+atlas = ExtResource("2_x7tnm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_70act"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdqko")
+}],
+"loop": true,
+"name": &"Agua_DOWN_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inkom")
+}],
+"loop": true,
+"name": &"Agua_DOWN_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsnf5")
+}],
+"loop": true,
+"name": &"Agua_LEFT_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3jrf")
+}],
+"loop": true,
+"name": &"Agua_LEFT_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdnew")
+}],
+"loop": true,
+"name": &"Agua_RIGHT_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgx6l")
+}],
+"loop": true,
+"name": &"Agua_RIGHT_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjlws")
+}],
+"loop": true,
+"name": &"Agua_UP_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txk7v")
+}],
+"loop": true,
+"name": &"Agua_UP_up",
+"speed": 5.0
+}]
+
+[node name="RaizUI" type="Control" unique_id=1286680084 node_paths=PackedStringArray("fuente_luz", "fuente_agua")]
+process_mode = 1
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ryxhv")
+fuente_luz = NodePath("TeclasReparacionLuz")
+fuente_agua = NodePath("TeclasReparacionAgua")
+
+[node name="NotificadorLuz" type="Label" parent="." unique_id=1992399506]
+z_index = 4
+y_sort_enabled = true
+layout_mode = 0
+offset_left = 17.0
+offset_top = 112.0
+offset_right = 329.0
+offset_bottom = 135.0
+theme_override_constants/outline_size = 10
+
+[node name="NotificadorAgua" type="Label" parent="." unique_id=386310519]
+z_index = 4
+y_sort_enabled = true
+layout_mode = 0
+offset_left = 17.0
+offset_top = 143.0
+offset_right = 329.0
+offset_bottom = 166.0
+theme_override_constants/outline_size = 10
+
+[node name="PagoCaja" type="Label" parent="." unique_id=346395552]
+z_index = 3
+layout_mode = 0
+offset_left = 244.0
+offset_top = 62.0
+offset_right = 383.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(0.28235295, 1, 0, 1)
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1981629046]
+z_index = 4
+y_sort_enabled = true
+layout_mode = 1
+anchors_preset = -1
+offset_left = 114.0
+offset_top = 14.0
+offset_right = 385.0
+offset_bottom = 68.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1765048390]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 2
+
+[node name="Dia" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1702582653]
+z_index = 4
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "Dia 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Horario" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=92831586]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "08:00 am"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="DineroTotal" type="Label" parent="VBoxContainer" unique_id=1275023699]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "$14000"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ReparacionLuz" type="HBoxContainer" parent="." unique_id=253781308]
+z_index = 4
+y_sort_enabled = true
+layout_mode = 1
+anchors_preset = -1
+offset_left = 127.0
+offset_top = 258.0
+offset_right = 247.0
+offset_bottom = 298.0
+theme = SubResource("Theme_x7tnm")
+theme_override_constants/separation = 0
+
+[node name="ReparacionAgua" type="HBoxContainer" parent="." unique_id=27379901]
+z_index = 4
+y_sort_enabled = true
+layout_mode = 1
+anchors_preset = -1
+offset_left = 89.0
+offset_top = 331.0
+offset_right = 244.0
+offset_bottom = 371.0
+theme_override_constants/separation = 0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=267735658]
+position = Vector2(204, 194)
+enabled = false
+zoom = Vector2(2, 2.1)
+process_callback = 0
+
+[node name="TeclasReparacionLuz" type="AnimatedSprite2D" parent="." unique_id=535038069]
+visible = false
+position = Vector2(24, 13)
+sprite_frames = SubResource("SpriteFrames_ahqh5")
+animation = &"Luz_A_down"
+
+[node name="TeclasReparacionAgua" type="AnimatedSprite2D" parent="." unique_id=1975116395]
+visible = false
+position = Vector2(89, 331)
+sprite_frames = SubResource("SpriteFrames_70act")
+animation = &"Agua_RIGHT_up"
+
+[node name="TimerParpadeo" type="Timer" parent="." unique_id=1225552603]
+process_mode = 1
+wait_time = 0.5

@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://blfdqcfviphft"]
+
+[ext_resource type="Script" uid="uid://die33b7avyum1" path="res://Scripts/Resultados.gd" id="1_fi12i"]
+[ext_resource type="Texture2D" uid="uid://bsibn3456kbwb" path="res://Resourse/Ticket.png" id="2_oi114"]
+[ext_resource type="Texture2D" uid="uid://bc8yp3hwtivgk" path="res://Sprites/button UI.png" id="3_ffvc0"]
+[ext_resource type="AudioStream" uid="uid://cy5h8rscfobkv" path="res://Sounds/SonidosInternos/vacuum_seal_opening.wav" id="4_0fa66"]
+[ext_resource type="Texture2D" uid="uid://ct02l2tvrbve5" path="res://Resourse/Sello_Bien.png" id="5_howrh"]
+[ext_resource type="Texture2D" uid="uid://bpu1i301qtfmp" path="res://Resourse/Sello_Mal.png" id="6_jisj3"]
+[ext_resource type="AudioStream" uid="uid://ddi85np283akv" path="res://Sounds/SonidosInternos/Victory.wav" id="7_45f06"]
+[ext_resource type="AudioStream" uid="uid://bceud7nxqbefr" path="res://Sounds/SonidosInternos/game_over_bad_chest.wav" id="8_45f06"]
+[ext_resource type="AudioStream" uid="uid://dtyvgmsyim4av" path="res://Sounds/SonidosInternos/sound-effect-hd.wav" id="9_fjn2e"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0fa66"]
+texture = ExtResource("3_ffvc0")
+region_rect = Rect2(17.048256, 1.0517807, 13.933472, 13.926787)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ag1p8"]
+texture = ExtResource("3_ffvc0")
+region_rect = Rect2(17.048, 1.052, 13.933, 13.927)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_howrh"]
+texture = ExtResource("3_ffvc0")
+region_rect = Rect2(17.048, 1.052, 13.933, 13.927)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jisj3"]
+texture = ExtResource("3_ffvc0")
+region_rect = Rect2(65.03035, 49.025806, 13.926743, 13.927708)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_45f06"]
+texture = ExtResource("3_ffvc0")
+region_rect = Rect2(65.03, 49.026, 13.927, 13.928)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fjn2e"]
+texture = ExtResource("3_ffvc0")
+region_rect = Rect2(65.03, 49.026, 13.927, 13.928)
+
+[node name="Resultados" type="CanvasLayer" unique_id=423111141]
+script = ExtResource("1_fi12i")
+
+[node name="Ticket" type="Sprite2D" parent="." unique_id=947615288]
+position = Vector2(420.25, 400.5)
+scale = Vector2(1.0515281, 1.0664063)
+texture = ExtResource("2_oi114")
+
+[node name="LabelDia" type="Label" parent="." unique_id=661244933]
+offset_left = 321.0
+offset_top = 216.0
+offset_right = 446.0
+offset_bottom = 258.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "A"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=753981653]
+offset_left = 416.0
+offset_top = 323.0
+offset_right = 575.0
+offset_bottom = 587.0
+theme_override_constants/separation = 4
+
+[node name="LabelVentas" type="Label" parent="VBoxContainer" unique_id=994072325]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Ventas"
+
+[node name="LabelAgua" type="Label" parent="VBoxContainer" unique_id=1511527983]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Agua"
+
+[node name="LabelLuz" type="Label" parent="VBoxContainer" unique_id=960593192]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Luz"
+
+[node name="LabelRenta" type="Label" parent="VBoxContainer" unique_id=215078073]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Renta"
+
+[node name="LabelAbasto" type="Label" parent="VBoxContainer" unique_id=480146218]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Abasto"
+
+[node name="LabelReseñas" type="Label" parent="VBoxContainer" unique_id=39045988]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Reseñas"
+
+[node name="LabelMultas" type="Label" parent="VBoxContainer" unique_id=2081730463]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Multas"
+
+[node name="LabelTotal" type="Label" parent="." unique_id=1065081616]
+offset_left = 402.0
+offset_top = 593.0
+offset_right = 561.0
+offset_bottom = 648.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Total"
+
+[node name="ButtonContinuar" type="Button" parent="." unique_id=347819628]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = -40.0
+offset_right = -59.0
+offset_bottom = 40.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_0fa66")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ag1p8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_howrh")
+
+[node name="ButtonMenu" type="Button" parent="." unique_id=1556438691]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = -40.0
+offset_right = 144.0
+offset_bottom = 40.0
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_jisj3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_45f06")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fjn2e")
+
+[node name="SonidoSello" type="AudioStreamPlayer" parent="." unique_id=457239503]
+stream = ExtResource("4_0fa66")
+
+[node name="SelloVictoria" type="Sprite2D" parent="." unique_id=1170574502]
+position = Vector2(637, 682)
+scale = Vector2(0.27246094, 0.27246094)
+texture = ExtResource("5_howrh")
+
+[node name="SelloDerrota" type="Sprite2D" parent="." unique_id=1503344276]
+position = Vector2(199, 679)
+rotation = 0.2617994
+scale = Vector2(0.54754925, 0.54754925)
+texture = ExtResource("6_jisj3")
+
+[node name="SonidoVictoria" type="AudioStreamPlayer" parent="." unique_id=1758598131]
+stream = ExtResource("7_45f06")
+
+[node name="SonidoDerrota" type="AudioStreamPlayer" parent="." unique_id=656563516]
+stream = ExtResource("8_45f06")
+
+[node name="SonidoTicket" type="AudioStreamPlayer" parent="." unique_id=757220886]
+stream = ExtResource("9_fjn2e")

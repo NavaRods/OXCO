@@ -1,0 +1,199 @@
+[gd_scene format=3 uid="uid://nwys3fyc43qg"]
+
+[ext_resource type="Script" uid="uid://dw83x2no1inlq" path="res://Scripts/Menu.gd" id="1_acpy4"]
+[ext_resource type="Texture2D" uid="uid://c0vbld6o2gpu" path="res://Resourse/5.png" id="2_hn5sk"]
+[ext_resource type="Texture2D" uid="uid://dmsndnjyu3obh" path="res://Resourse/1.png" id="2_mqmcw"]
+[ext_resource type="Texture2D" uid="uid://dq1a5a0wrhkns" path="res://Resourse/2.png" id="3_hn5sk"]
+[ext_resource type="Texture2D" uid="uid://bkm2dcnms0cb4" path="res://Sprites/Ajustes.png" id="4_2dvg7"]
+[ext_resource type="Texture2D" uid="uid://bc8yp3hwtivgk" path="res://Sprites/button UI.png" id="5_lqnic"]
+[ext_resource type="AudioStream" uid="uid://cit85kfopsqyx" path="res://Sounds/SonidosExternos/Sonido_Fondo.wav" id="7_2dvg7"]
+[ext_resource type="AudioStream" uid="uid://dxjq8l657p7mx" path="res://Sounds/SonidosExternos/Sonido_Ambiente_Fondo.WAV" id="8_lqnic"]
+[ext_resource type="AudioStream" uid="uid://bqunuuad5nc2r" path="res://Sounds/SonidosInternos/Configuracion.wav" id="9_lqnic"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cjobd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mqmcw")
+}],
+"loop": true,
+"name": &"Menu1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_hn5sk")
+}],
+"loop": true,
+"name": &"Menu2",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dr18l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2dvg7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lqnic"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cjobd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xqhx0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1huii"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_005ir"]
+
+[node name="Menu" type="Control" unique_id=209955057]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -642.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(599, 436)
+script = ExtResource("1_acpy4")
+
+[node name="PanelContenido" type="Panel" parent="." unique_id=1881299532]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -411.0
+offset_top = -730.0
+offset_right = 411.0
+offset_bottom = 730.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FondoSuperior" type="Sprite2D" parent="PanelContenido" unique_id=1098009550]
+position = Vector2(407.99997, 412)
+scale = Vector2(0.7939453, 0.7939453)
+texture = ExtResource("2_hn5sk")
+
+[node name="FondoInferior" type="AnimatedSprite2D" parent="PanelContenido" unique_id=1176888237]
+position = Vector2(406, 1044)
+scale = Vector2(0.79296875, 0.79296875)
+sprite_frames = SubResource("SpriteFrames_cjobd")
+animation = &"Menu1"
+
+[node name="BotonPuerta" type="Button" parent="PanelContenido" unique_id=413886837]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 920.0
+offset_right = 728.0
+offset_bottom = 1360.0
+pivot_offset = Vector2(141, 156)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dr18l")
+
+[node name="BotonConfiguracion" type="Button" parent="PanelContenido" unique_id=1678706]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 638.0
+offset_right = 326.0
+offset_bottom = 815.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2dvg7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lqnic")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_cjobd")
+
+[node name="BotonReturn" type="Button" parent="PanelContenido" unique_id=1967883130]
+visible = false
+layout_mode = 0
+offset_left = 25.0
+offset_top = 638.0
+offset_right = 326.0
+offset_bottom = 815.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xqhx0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1huii")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_005ir")
+
+[node name="SpritesPlay" type="Sprite2D" parent="PanelContenido" unique_id=810968031]
+position = Vector2(600.99994, 1047)
+scale = Vector2(11.2, 11.2)
+texture = ExtResource("5_lqnic")
+region_enabled = true
+region_rect = Rect2(114.25481, 145.3358, 11.930618, 10.888641)
+
+[node name="SpriteAjustes" type="Sprite2D" parent="PanelContenido" unique_id=1961839756]
+position = Vector2(180.99998, 735.00006)
+scale = Vector2(0.32666016, 0.32666016)
+texture = ExtResource("4_2dvg7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContenido" unique_id=1441588214]
+layout_mode = 0
+offset_left = 204.00002
+offset_top = 114.0
+offset_right = 437.88007
+offset_bottom = 251.0
+scale = Vector2(1.6504186, 1.408)
+
+[node name="Label" type="Label" parent="PanelContenido/VBoxContainer" unique_id=366443930]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Musica General"
+
+[node name="SliderMaster" type="HSlider" parent="PanelContenido/VBoxContainer" unique_id=1581233142]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="Label2" type="Label" parent="PanelContenido/VBoxContainer" unique_id=1669286586]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Musica"
+
+[node name="SliderMusica" type="HSlider" parent="PanelContenido/VBoxContainer" unique_id=2102874688]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="Label3" type="Label" parent="PanelContenido/VBoxContainer" unique_id=1084019067]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "SFX"
+
+[node name="SliderSFX" type="HSlider" parent="PanelContenido/VBoxContainer" unique_id=1889183334]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="MusicaFondo" type="AudioStreamPlayer2D" parent="." unique_id=432818485]
+position = Vector2(390, 652)
+stream = ExtResource("7_2dvg7")
+autoplay = true
+bus = &"Musica"
+
+[node name="MusicaAmbiente_1" type="AudioStreamPlayer2D" parent="." unique_id=238726128]
+position = Vector2(392, 647)
+stream = ExtResource("8_lqnic")
+volume_db = 5.0
+autoplay = true
+
+[node name="SonidosPuerta" type="AudioStreamPlayer2D" parent="." unique_id=1487656351]
+bus = &"SFX"
+
+[node name="SonidoCartel" type="AudioStreamPlayer2D" parent="." unique_id=339511188]
+position = Vector2(-13, -9)
+stream = ExtResource("9_lqnic")
+
+[node name="Label" type="Label" parent="." unique_id=30164104]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 1357.0
+offset_right = 194.0
+offset_bottom = 1432.0
+text = "By
+Carlos Nava Rodriguez
+César Iván Nava Topete"
+
+[connection signal="mouse_entered" from="PanelContenido/BotonPuerta" to="." method="_on_boton_puerta_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContenido/BotonPuerta" to="." method="_on_boton_puerta_mouse_exited"]
+[connection signal="pressed" from="PanelContenido/BotonPuerta" to="." method="_on_boton_puerta_pressed"]
+[connection signal="pressed" from="PanelContenido/BotonConfiguracion" to="." method="_on_boton_configuracion_pressed"]
+[connection signal="pressed" from="PanelContenido/BotonReturn" to="." method="_on_boton_return_pressed"]
+[connection signal="value_changed" from="PanelContenido/VBoxContainer/SliderMaster" to="." method="_on_slider_master_value_changed"]
+[connection signal="value_changed" from="PanelContenido/VBoxContainer/SliderMusica" to="." method="_on_slider_musica_value_changed"]
+[connection signal="value_changed" from="PanelContenido/VBoxContainer/SliderSFX" to="." method="_on_slider_sfx_value_changed"]

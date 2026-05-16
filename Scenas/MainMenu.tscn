@@ -1,0 +1,446 @@
+[gd_scene format=3 uid="uid://cx6q75h5t3cd5"]
+
+[ext_resource type="Script" uid="uid://d4awmq48ak8ca" path="res://Scenas/MainMenu.gd" id="1_4sflb"]
+[ext_resource type="Script" uid="uid://dl7ecxdr4exch" path="res://Scripts/SlotButton.gd" id="1_20ll7"]
+[ext_resource type="Texture2D" uid="uid://c8l1sjku361ui" path="res://Resourse/6.png" id="1_gstsp"]
+[ext_resource type="Script" uid="uid://camnnl6xxclwu" path="res://Scripts/PopupCreacion.gd" id="2_j2bcc"]
+[ext_resource type="Texture2D" uid="uid://bc8yp3hwtivgk" path="res://Sprites/button UI.png" id="3_sgguy"]
+[ext_resource type="Texture2D" uid="uid://c2bfsunbano6x" path="res://Sprites/Cute_Fantasy_Free/Cute_Fantasy_Free/Tiles/FarmLand_Tile.png" id="4_sgguy"]
+[ext_resource type="AudioStream" uid="uid://102rfwfnlvvv" path="res://Sounds/SonidosInternos/Seleccionar.wav" id="7_exg4h"]
+[ext_resource type="AudioStream" uid="uid://cit85kfopsqyx" path="res://Sounds/SonidosExternos/Sonido_Fondo.wav" id="7_gc6ug"]
+[ext_resource type="AudioStream" uid="uid://b6282cup063vk" path="res://Sounds/SonidosInternos/click2.wav" id="9_exg4h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gc6ug"]
+texture = ExtResource("3_sgguy")
+region_rect = Rect2(64.954834, 64.90071, 14.118744, 14.066635)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_exg4h"]
+texture = ExtResource("3_sgguy")
+region_rect = Rect2(64.955, 64.901, 14.119, 14.067)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_75irm"]
+texture = ExtResource("3_sgguy")
+region_rect = Rect2(64.955, 64.901, 14.119, 14.067)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rsv1v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4sflb"]
+texture = ExtResource("4_sgguy")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gc6ug"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="MainMenu" type="Control" unique_id=881554070]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4sflb")
+
+[node name="Fondo" type="TextureRect" parent="." unique_id=7073824]
+layout_mode = 0
+offset_right = 799.0
+offset_bottom = 874.0
+texture = ExtResource("1_gstsp")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=909906950]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="PanelContainer" type="Panel" parent="HBoxContainer" unique_id=848982636]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SlotButton1" type="Button" parent="HBoxContainer/PanelContainer" unique_id=1613721036 node_paths=PackedStringArray("boton_borrar_vinculado") groups=["botones_slots"]]
+layout_mode = 0
+offset_left = -366.0
+offset_top = -123.0
+offset_right = -136.0
+offset_bottom = 192.0
+script = ExtResource("1_20ll7")
+boton_borrar_vinculado = NodePath("../BtnBorrarSlot")
+
+[node name="BtnBorrarSlot" type="Button" parent="HBoxContainer/PanelContainer" unique_id=2066875916]
+layout_mode = 0
+offset_left = -275.0
+offset_top = 102.0
+offset_right = -225.0
+offset_bottom = 152.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_gc6ug")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_exg4h")
+theme_override_styles/hover = SubResource("StyleBoxTexture_75irm")
+
+[node name="PanelContainer2" type="Panel" parent="HBoxContainer" unique_id=1165184232]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SlotButton2" type="Button" parent="HBoxContainer/PanelContainer2" unique_id=593150887 node_paths=PackedStringArray("boton_borrar_vinculado") groups=["botones_slots"]]
+layout_mode = 0
+offset_left = -113.0
+offset_top = -123.0
+offset_right = 117.0
+offset_bottom = 192.0
+script = ExtResource("1_20ll7")
+slot_index = 2
+boton_borrar_vinculado = NodePath("../BtnBorrarSlot")
+
+[node name="BtnBorrarSlot" type="Button" parent="HBoxContainer/PanelContainer2" unique_id=1648055563]
+layout_mode = 0
+offset_left = -20.0
+offset_top = 102.0
+offset_right = 30.0
+offset_bottom = 152.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_gc6ug")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_exg4h")
+theme_override_styles/hover = SubResource("StyleBoxTexture_75irm")
+
+[node name="PanelContainer3" type="Panel" parent="HBoxContainer" unique_id=528721297]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SlotButton3" type="Button" parent="HBoxContainer/PanelContainer3" unique_id=40678395 node_paths=PackedStringArray("boton_borrar_vinculado") groups=["botones_slots"]]
+layout_mode = 0
+offset_left = 144.0
+offset_top = -123.0
+offset_right = 374.0
+offset_bottom = 192.0
+script = ExtResource("1_20ll7")
+slot_index = 3
+boton_borrar_vinculado = NodePath("../BtnBorrarSlot")
+
+[node name="BtnBorrarSlot" type="Button" parent="HBoxContainer/PanelContainer3" unique_id=689620154]
+layout_mode = 0
+offset_left = 235.0
+offset_top = 102.0
+offset_right = 285.0
+offset_bottom = 152.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_gc6ug")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_exg4h")
+theme_override_styles/hover = SubResource("StyleBoxTexture_75irm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=567382120]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29625
+anchor_top = 0.13625
+anchor_right = 0.865
+anchor_bottom = 0.1925
+grow_horizontal = 2
+size_flags_horizontal = 4
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1651330633]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Pasa a Caja a Crear tu Partida"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Popup1" type="Panel" parent="." unique_id=1075394435]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = 289.0
+offset_right = 24.0
+offset_bottom = 289.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-289, -260)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_rsv1v")
+script = ExtResource("2_j2bcc")
+
+[node name="PopupPanel" type="PanelContainer" parent="Popup1" unique_id=333744627]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -396.0
+offset_top = -398.0
+offset_right = -174.0
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4sflb")
+
+[node name="MarginContainer" type="MarginContainer" parent="Popup1/PopupPanel" unique_id=1571615603]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 55
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup1/PopupPanel/MarginContainer" unique_id=1395715573]
+layout_mode = 2
+
+[node name="InputP1" type="LineEdit" parent="Popup1/PopupPanel/MarginContainer/VBoxContainer" unique_id=1767067766]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.60933006, 0.6093301, 0.60933006, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color_pressed = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_gc6ug")
+placeholder_text = "Jugador 1"
+
+[node name="InputP2" type="LineEdit" parent="Popup1/PopupPanel/MarginContainer/VBoxContainer" unique_id=388111231]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.60933006, 0.6093301, 0.60933006, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color_pressed = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_gc6ug")
+placeholder_text = "Jugador 2"
+
+[node name="CheckMultiplayer" type="CheckButton" parent="Popup1/PopupPanel/MarginContainer/VBoxContainer" unique_id=451008730]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Modo 2 Jugadores"
+
+[node name="BtnConfirmar" type="Button" parent="Popup1/PopupPanel/MarginContainer/VBoxContainer" unique_id=918738845]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Confirmar"
+
+[node name="BtnCancelar" type="Button" parent="Popup1/PopupPanel/MarginContainer/VBoxContainer" unique_id=1720516134]
+layout_mode = 2
+text = "Cancelar"
+
+[node name="Popup2" type="Panel" parent="." unique_id=392942925]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 287.0
+offset_top = 289.0
+offset_right = 287.0
+offset_bottom = 289.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-289, -260)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_rsv1v")
+script = ExtResource("2_j2bcc")
+
+[node name="PopupPanel" type="PanelContainer" parent="Popup2" unique_id=815713849]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -396.0
+offset_top = -398.0
+offset_right = -174.0
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4sflb")
+
+[node name="MarginContainer" type="MarginContainer" parent="Popup2/PopupPanel" unique_id=1698386846]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 55
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup2/PopupPanel/MarginContainer" unique_id=1935841813]
+layout_mode = 2
+
+[node name="InputP1" type="LineEdit" parent="Popup2/PopupPanel/MarginContainer/VBoxContainer" unique_id=1510779393]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.60933006, 0.6093301, 0.60933006, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color_pressed = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_gc6ug")
+placeholder_text = "Jugador 1"
+
+[node name="InputP2" type="LineEdit" parent="Popup2/PopupPanel/MarginContainer/VBoxContainer" unique_id=432355603]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.60933006, 0.6093301, 0.60933006, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color_pressed = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_gc6ug")
+placeholder_text = "Jugador 2"
+
+[node name="CheckMultiplayer" type="CheckButton" parent="Popup2/PopupPanel/MarginContainer/VBoxContainer" unique_id=154557906]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Modo 2 Jugadores"
+
+[node name="BtnConfirmar" type="Button" parent="Popup2/PopupPanel/MarginContainer/VBoxContainer" unique_id=1908536417]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Confirmar"
+
+[node name="BtnCancelar" type="Button" parent="Popup2/PopupPanel/MarginContainer/VBoxContainer" unique_id=1571837685]
+layout_mode = 2
+text = "Cancelar"
+
+[node name="Popup3" type="Panel" parent="." unique_id=1500020514]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 554.0
+offset_top = 289.0
+offset_right = 554.0
+offset_bottom = 289.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-289, -260)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_rsv1v")
+script = ExtResource("2_j2bcc")
+
+[node name="PopupPanel" type="PanelContainer" parent="Popup3" unique_id=1286564491]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -396.0
+offset_top = -398.0
+offset_right = -174.0
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4sflb")
+
+[node name="MarginContainer" type="MarginContainer" parent="Popup3/PopupPanel" unique_id=2091385357]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 55
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup3/PopupPanel/MarginContainer" unique_id=896961490]
+layout_mode = 2
+
+[node name="InputP1" type="LineEdit" parent="Popup3/PopupPanel/MarginContainer/VBoxContainer" unique_id=1717222266]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.60933006, 0.6093301, 0.60933006, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color_pressed = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_gc6ug")
+placeholder_text = "Jugador 1"
+
+[node name="InputP2" type="LineEdit" parent="Popup3/PopupPanel/MarginContainer/VBoxContainer" unique_id=1023551911]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.60933006, 0.6093301, 0.60933006, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color_pressed = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_gc6ug")
+placeholder_text = "Jugador 2"
+
+[node name="CheckMultiplayer" type="CheckButton" parent="Popup3/PopupPanel/MarginContainer/VBoxContainer" unique_id=1622707135]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Modo 2 Jugadores"
+
+[node name="BtnConfirmar" type="Button" parent="Popup3/PopupPanel/MarginContainer/VBoxContainer" unique_id=246204543]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Confirmar"
+
+[node name="BtnCancelar" type="Button" parent="Popup3/PopupPanel/MarginContainer/VBoxContainer" unique_id=1025741390]
+layout_mode = 2
+text = "Cancelar"
+
+[node name="SonidoSeleccion" type="AudioStreamPlayer2D" parent="." unique_id=768637052]
+position = Vector2(554, 277)
+stream = ExtResource("7_exg4h")
+volume_db = 5.0
+
+[node name="MusicaFondo" type="AudioStreamPlayer2D" parent="." unique_id=1860721048]
+stream = ExtResource("7_gc6ug")
+autoplay = true
+
+[node name="SonidoClick" type="AudioStreamPlayer2D" parent="." unique_id=1881389134]
+stream = ExtResource("9_exg4h")
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="." unique_id=850470388]
+
+[connection signal="mouse_entered" from="HBoxContainer/PanelContainer/SlotButton1" to="HBoxContainer/PanelContainer/SlotButton1" method="_on_mouse_entered"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer/SlotButton1" to="HBoxContainer/PanelContainer/SlotButton1" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer/BtnBorrarSlot" to="HBoxContainer/PanelContainer/SlotButton1" method="_on_btn_borrar_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/PanelContainer2/SlotButton2" to="HBoxContainer/PanelContainer2/SlotButton2" method="_on_mouse_entered"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer2/SlotButton2" to="HBoxContainer/PanelContainer2/SlotButton2" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer2/BtnBorrarSlot" to="HBoxContainer/PanelContainer2/SlotButton2" method="_on_btn_borrar_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/PanelContainer3/SlotButton3" to="HBoxContainer/PanelContainer3/SlotButton3" method="_on_mouse_entered"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer3/SlotButton3" to="HBoxContainer/PanelContainer3/SlotButton3" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer3/BtnBorrarSlot" to="HBoxContainer/PanelContainer3/SlotButton3" method="_on_btn_borrar_slot_pressed"]
+[connection signal="toggled" from="Popup1/PopupPanel/MarginContainer/VBoxContainer/CheckMultiplayer" to="Popup1" method="_on_check_multiplayer_toggled"]
+[connection signal="pressed" from="Popup1/PopupPanel/MarginContainer/VBoxContainer/BtnConfirmar" to="Popup1" method="_on_btn_confirmar_pressed"]
+[connection signal="pressed" from="Popup1/PopupPanel/MarginContainer/VBoxContainer/BtnCancelar" to="Popup1" method="_on_btn_cancelar_pressed"]
+[connection signal="toggled" from="Popup2/PopupPanel/MarginContainer/VBoxContainer/CheckMultiplayer" to="Popup2" method="_on_check_multiplayer_toggled"]
+[connection signal="pressed" from="Popup2/PopupPanel/MarginContainer/VBoxContainer/BtnConfirmar" to="Popup2" method="_on_btn_confirmar_pressed"]
+[connection signal="pressed" from="Popup2/PopupPanel/MarginContainer/VBoxContainer/BtnCancelar" to="Popup2" method="_on_btn_cancelar_pressed"]
+[connection signal="toggled" from="Popup3/PopupPanel/MarginContainer/VBoxContainer/CheckMultiplayer" to="Popup3" method="_on_check_multiplayer_toggled"]
+[connection signal="pressed" from="Popup3/PopupPanel/MarginContainer/VBoxContainer/BtnConfirmar" to="Popup3" method="_on_btn_confirmar_pressed"]
+[connection signal="pressed" from="Popup3/PopupPanel/MarginContainer/VBoxContainer/BtnCancelar" to="Popup3" method="_on_btn_cancelar_pressed"]
