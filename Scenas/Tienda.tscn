@@ -20,6 +20,8 @@
 [ext_resource type="AudioStream" uid="uid://bqfihp7w57qhn" path="res://Sounds/SonidosInternos/click.wav" id="18_ygk8q"]
 [ext_resource type="AudioStream" uid="uid://bxs3mmbk07bqp" path="res://Sounds/SonidosInternos/Sonido_Reparando_Agua.wav" id="19_ud2cn"]
 [ext_resource type="AudioStream" uid="uid://cuhtkw536kr18" path="res://Sounds/SonidosInternos/Musica_Tienda.ogg" id="20_vluc2"]
+[ext_resource type="Texture2D" uid="uid://gdrrb5rglcl5" path="res://Sprites/ZonaAgua.png" id="21_52b5m"]
+[ext_resource type="Texture2D" uid="uid://c0krft5ig6jh1" path="res://Sprites/ZonaLuz.png" id="22_rhf6f"]
 
 [sub_resource type="Gradient" id="Gradient_2fksg"]
 interpolation_color_space = 1
@@ -16242,13 +16244,13 @@ script = ExtResource("7_uqtqr")
 autostart = true
 
 [node name="RaizUI" parent="." unique_id=667076418 instance=ExtResource("7_42ylx")]
-z_index = 4
-y_sort_enabled = true
+z_index = 16
 
 [node name="Suciedad" parent="." unique_id=953478984 instance=ExtResource("8_pkriu")]
 position = Vector2(0, -1)
 
 [node name="Control" parent="." unique_id=635759602 instance=ExtResource("10_xkc0q")]
+visible = false
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 1.0
@@ -16330,6 +16332,18 @@ bus = &"SFX"
 stream = ExtResource("20_vluc2")
 autoplay = true
 bus = &"Musica"
+
+[node name="MarcaAgua" type="Sprite2D" parent="." unique_id=462711778]
+z_index = 6
+position = Vector2(51, 336)
+scale = Vector2(0.040826615, 0.04082662)
+texture = ExtResource("21_52b5m")
+
+[node name="MarcaLuz" type="Sprite2D" parent="." unique_id=326814207]
+z_index = 6
+position = Vector2(148, 300)
+scale = Vector2(0.041330636, 0.041330643)
+texture = ExtResource("22_rhf6f")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="request_completed" from="Servicios/EconomiaAPI/HTTPRequest" to="Servicios/EconomiaAPI" method="_on_http_request_request_completed"]

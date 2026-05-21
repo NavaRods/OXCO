@@ -2062,10 +2062,10 @@ sprite_frames = SubResource("SpriteFrames_w25my")
 animation = &"NPC_1_Mov_Frente"
 
 [node name="BarraPaciencia" type="ProgressBar" parent="." unique_id=2065397880]
-offset_left = -9.23077
-offset_top = -16.923077
-offset_right = 10.76923
-offset_bottom = -12.923077
+offset_left = -10.714273
+offset_top = -17.142847
+offset_right = 9.285727
+offset_bottom = -13.142847
 theme_override_font_sizes/font_size = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_qa3de")
 show_percentage = false
@@ -2074,3 +2074,12 @@ show_percentage = false
 position = Vector2(0, -44.285713)
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="LabelFeedback" type="Label" parent="." unique_id=1608500184]
+offset_left = -20.714283
+offset_top = -25.000006
+offset_right = 19.285717
+offset_bottom = -17.000006
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1

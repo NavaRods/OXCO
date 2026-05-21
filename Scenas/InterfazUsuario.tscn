@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://d2psd1ut7yxxq" path="res://Scripts/InterfazUsuario.gd" id="1_ryxhv"]
 [ext_resource type="Texture2D" uid="uid://bvogakqrhs30i" path="res://Sprites/Keyboard Letters and Symbols.png" id="2_x7tnm"]
+[ext_resource type="Texture2D" uid="uid://cu63o51hx1qm6" path="res://Sprites/Estrella.png" id="3_70act"]
+[ext_resource type="Texture2D" uid="uid://bunqbe14a8bvp" path="res://Sprites/Estrella_gris.png" id="4_k2j74"]
 
 [sub_resource type="Theme" id="Theme_x7tnm"]
 
@@ -203,13 +205,41 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="RaizUI" type="Control" unique_id=1286680084 node_paths=PackedStringArray("fuente_luz", "fuente_agua")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctpwe"]
+atlas = ExtResource("3_70act")
+region = Rect2(469, 0, 469, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1hly"]
+atlas = ExtResource("4_k2j74")
+region = Rect2(469, 0, 469, 768)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_riuwq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctpwe")
+}],
+"loop": true,
+"name": &"llena",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1hly")
+}],
+"loop": true,
+"name": &"vacia",
+"speed": 5.0
+}]
+
+[node name="RaizUI" type="Control" unique_id=1286680084 node_paths=PackedStringArray("fuente_luz", "fuente_agua", "fuente_estrella")]
 process_mode = 1
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ryxhv")
 fuente_luz = NodePath("TeclasReparacionLuz")
 fuente_agua = NodePath("TeclasReparacionAgua")
+fuente_estrella = NodePath("Estrellas")
 
 [node name="NotificadorLuz" type="Label" parent="." unique_id=1992399506]
 z_index = 4
@@ -280,7 +310,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="ReparacionLuz" type="HBoxContainer" parent="." unique_id=253781308]
-z_index = 4
+z_index = 16
 y_sort_enabled = true
 layout_mode = 1
 anchors_preset = -1
@@ -292,7 +322,7 @@ theme = SubResource("Theme_x7tnm")
 theme_override_constants/separation = 0
 
 [node name="ReparacionAgua" type="HBoxContainer" parent="." unique_id=27379901]
-z_index = 4
+z_index = 16
 y_sort_enabled = true
 layout_mode = 1
 anchors_preset = -1
@@ -302,6 +332,15 @@ offset_right = 244.0
 offset_bottom = 371.0
 theme_override_constants/separation = 0
 
+[node name="ContenedorEstrellas" type="HBoxContainer" parent="." unique_id=1959557744]
+z_index = 15
+layout_mode = 0
+offset_left = 401.0
+offset_top = 96.0
+offset_right = 518.0
+offset_bottom = 120.0
+rotation = 1.5707964
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=267735658]
 position = Vector2(204, 194)
 enabled = false
@@ -310,12 +349,14 @@ process_callback = 0
 
 [node name="TeclasReparacionLuz" type="AnimatedSprite2D" parent="." unique_id=535038069]
 visible = false
+z_index = 16
 position = Vector2(24, 13)
 sprite_frames = SubResource("SpriteFrames_ahqh5")
 animation = &"Luz_A_down"
 
 [node name="TeclasReparacionAgua" type="AnimatedSprite2D" parent="." unique_id=1975116395]
 visible = false
+z_index = 16
 position = Vector2(89, 331)
 sprite_frames = SubResource("SpriteFrames_70act")
 animation = &"Agua_RIGHT_up"
@@ -323,3 +364,11 @@ animation = &"Agua_RIGHT_up"
 [node name="TimerParpadeo" type="Timer" parent="." unique_id=1225552603]
 process_mode = 1
 wait_time = 0.5
+
+[node name="Estrellas" type="AnimatedSprite2D" parent="." unique_id=389735859]
+visible = false
+z_index = 15
+position = Vector2(140.81252, 33.505325)
+scale = Vector2(0.017857075, 0.017857075)
+sprite_frames = SubResource("SpriteFrames_riuwq")
+animation = &"vacia"

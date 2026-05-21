@@ -19,6 +19,9 @@ const ZOOM_FINAL = Vector2(10.0, 10.0)
 @onready var slider_master = $PanelContenido/VBoxContainer/SliderMaster
 @onready var slider_musica = $PanelContenido/VBoxContainer/SliderMusica
 @onready var slider_sfx = $PanelContenido/VBoxContainer/SliderSFX
+@onready var lbl_master = $PanelContenido/VBoxContainer/HBoxContainer/LabelMaster
+@onready var lbl_musica = $PanelContenido/VBoxContainer/HBoxContainer2/LabelMusica
+@onready var lbl_sfx = $PanelContenido/VBoxContainer/HBoxContainer3/LabelSFX
 
 # --- AUDIO ---
 @onready var musica_fondo = $MusicaFondo
@@ -62,10 +65,18 @@ func _configurar_estado_inicial():
 	botonret.hide()
 
 func _cargar_valores_audio():
-	slider_master.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
-	slider_musica.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Musica")))
-	slider_sfx.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
-
+	var master_val = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
+	var musica_val = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Musica")))
+	var sfx_val = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
+	
+	slider_master.value = master_val
+	slider_musica.value = musica_val
+	slider_sfx.value = sfx_val
+	
+	# Actualizar etiquetas al cargar
+	_actualizar_texto_porcentaje("Master", master_val)
+	_actualizar_texto_porcentaje("Musica", musica_val)
+	_actualizar_texto_porcentaje("SFX", sfx_val)
 # --- INTERACCIÓN: FACHADA (PUERTA) ---
 
 func _on_boton_puerta_mouse_entered():
@@ -126,6 +137,14 @@ func _actualizar_bus_audio(nombre_bus: String, valor: float):
 	var index = AudioServer.get_bus_index(nombre_bus)
 	AudioServer.set_bus_volume_db(index, linear_to_db(valor))
 	AudioServer.set_bus_mute(index, valor == 0)
+	_actualizar_texto_porcentaje(nombre_bus, valor)
+
+func _actualizar_texto_porcentaje(nombre_bus: String, valor: float):
+	var porcentaje = str(round(valor * 100)) + "%"
+	match nombre_bus:
+		"Master": lbl_master.text = porcentaje
+		"Musica": lbl_musica.text = porcentaje
+		"SFX": lbl_sfx.text = porcentaje
 
 func reproducir_sonido_puerta(abriendo: bool):
 	var lista = audios_abrir if abriendo else audios_cerrar

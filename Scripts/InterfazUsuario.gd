@@ -10,10 +10,13 @@ extends Control
 @onready var container_luz = $ReparacionLuz
 @onready var container_agua = $ReparacionAgua
 @onready var timer_parpadeo = $TimerParpadeo
+@onready var contenedor_estrellas = $ContenedorEstrellas
+@onready var estrellas_recurso = $Estrellas
 
 # --- NUEVOS: Arrastra aquí tus AnimatedSprite2D desde el inspector ---
 @export var fuente_luz: AnimatedSprite2D 
 @export var fuente_agua: AnimatedSprite2D
+@export var fuente_estrella: AnimatedSprite2D # Arrastra aquí tu AnimatedSprite de estrellas
 
 func _ready():
 	_limpiar_ui()
@@ -31,9 +34,47 @@ func _limpiar_ui():
 func actualizar_datos_generales():
 	label_dia.text = "DÍA: " + str(GameManager.dia_actual)
 	label_horario.text = "%02d:%02d" % [GameManager.reloj_jornada_horas, GameManager.reloj_jornada_minutos]
-	label_dinero.text = "TOTAL: $%.2f" % GameManager.dinero_actual
-
+	label_dinero.text = "$%.2f" % GameManager.dinero_actual
+	
+	_actualizar_estrellas(GameManager.obtener_estrellas_actuales())
 # --- SISTEMA DE REPARACIÓN ---
+
+func _actualizar_estrellas(cantidad_llenas: int):
+	# 1. Limpiar estrellas anteriores
+	print("Cantidad de estrellas: ", cantidad_llenas)
+	for child in contenedor_estrellas.get_children():
+		child.queue_free()
+	
+	# --- AJUSTES DE DISEÑO ---
+	# Espacio que ocupa cada estrella en el contenedor
+	var tamaño_celda = Vector2(20, 20) 
+	# Escala del sprite (0.5 es la mitad de su tamaño original)
+	var escala_visual = Vector2(0.05, 0.05) 
+	# -------------------------
+
+	for i in range(1, 6):
+		var wrapper = Control.new()
+		wrapper.custom_minimum_size = tamaño_celda
+		
+		var estrella_nueva = AnimatedSprite2D.new()
+		
+		# Asegúrate de usar el nombre correcto de tu nodo de recursos
+		estrella_nueva.sprite_frames = estrellas_recurso.sprite_frames
+		estrella_nueva.position = tamaño_celda / 2
+		estrella_nueva.scale = escala_visual
+		
+		wrapper.add_child(estrella_nueva)
+		contenedor_estrellas.add_child(wrapper)
+
+		# AQUÍ EL CAMBIO: Usamos 'cantidad_llenas' en lugar de 'valor'
+		if i <= cantidad_llenas:
+			if estrella_nueva.sprite_frames.has_animation("llena"):
+				estrella_nueva.play("llena")
+				estrella_nueva.modulate.a = 1.0
+		else:
+			if estrella_nueva.sprite_frames.has_animation("vacia"):
+				estrella_nueva.play("vacia")
+				estrella_nueva.modulate.a = 0.4
 
 func actualizar_secuencia(tipo: String, secuencia: Array, actual: int):
 	var container = container_luz if tipo == "LUZ" else container_agua

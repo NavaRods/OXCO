@@ -58,33 +58,71 @@ func animar_ticket():
 	var imp_luz = 40.0
 	var renta = 300.0
 	var costo_abasto = ventas * 0.30
+	var atendidos = GameManager.clientes_atendidos_exito
 	var perdidos = GameManager.clientes_perdidos
+	var balance_reputacion = atendidos - perdidos
+	var monto_resenas = 0.0
 	
-	print("CANTIDAD TOTAL DE CLEINTES PERDICOS" + str(perdidos))
-	var tasa_resenas = 0.0
-	if perdidos >= 1 and perdidos <= 5: tasa_resenas = 0.05
-	elif perdidos >= 6 and perdidos <= 9: tasa_resenas = 0.10
-	elif perdidos >= 10: tasa_resenas = 0.15
+	print("Total de clientes Atendidos: ", atendidos)
+	print("Total de clientes Perdidos: ", perdidos)
+	print("Balance de reputacion: ", balance_reputacion)
 	
-	var penalizacion_resenas = perdidos * tasa_resenas
+	if balance_reputacion >= 0:
+		# GANANCIA: Por cada cliente neto positivo, gana $10 (ajusta el valor a tu gusto)
+		monto_resenas = balance_reputacion * 10.0
+		GameManager.reputacion_total += atendidos
+	else:
+		# PÉRDIDA: Si hay más perdidos que atendidos, aplicamos penalización
+		# Usamos tu lógica original de tasas pero basada en el déficit
+		var deficit = abs(balance_reputacion)
+		var tasa = 0.05 if deficit <= 5 else (0.10 if deficit <= 9 else 0.15)
+		monto_resenas = -(deficit * tasa * 10.0) # Valor negativo para el balance
+		GameManager.reputacion_total -= perdidos
+		if GameManager.reputacion_total < 0: GameManager.reputacion_total = 0
+	
+	print("REPUTACION ACTUAL: ", GameManager.reputacion_total)
+	
 	var total_multas = GameManager.total_dinero_multas
-	print("CANTIDAD TOTAL DE RESEÑAS" + str(penalizacion_resenas))
+	# print("CANTIDAD TOTAL DE RESEÑAS" + str(penalizacion_resenas))
 	
 	# El balance es sobre lo ganado HOY. 
 	# Los 500 iniciales están en GameManager.dinero_actual, no deben sumarse al Label de "Ventas"
-	var balance_final = ventas - (imp_agua + imp_luz + renta + costo_abasto + penalizacion_resenas + total_multas)
+	var balance_final = GameManager.dinero_actual - (imp_agua + imp_luz + renta + costo_abasto + total_multas) + monto_resenas
 	var dinero_proyectado = GameManager.dinero_actual + balance_final
 	
 	# --- SECUENCIA DE APARICIÓN ---
 	if sonido_ticket: sonido_ticket.play()
 	
-	await mostrar_linea(lbl_dia, str(GameManager.dia_actual))
+	lbl_dia.add_theme_color_override("font_color", Color.BLACK)
+	await mostrar_linea(lbl_dia, "" + str(GameManager.dia_actual))
+	
+	lbl_ventas.add_theme_color_override("font_color", Color.SPRING_GREEN)
 	await mostrar_linea(lbl_ventas, "$" + str(snapped(ventas, 0.01)))
+	
+	# Gastos Fijos (Rojo)
+	lbl_agua.add_theme_color_override("font_color", Color.RED)
 	await mostrar_linea(lbl_agua, "$" + str(imp_agua))
+	
+	lbl_luz.add_theme_color_override("font_color", Color.RED)
 	await mostrar_linea(lbl_luz, "$" + str(imp_luz))
+	
+	lbl_renta.add_theme_color_override("font_color", Color.RED)
 	await mostrar_linea(lbl_renta, "$" + str(renta))
+	
+	# Abasto (Rojo)
+	lbl_abasto.add_theme_color_override("font_color", Color.RED)
 	await mostrar_linea(lbl_abasto, "$" + str(snapped(costo_abasto, 0.01)))
-	await mostrar_linea(lbl_resenas, "$" + str(snapped(penalizacion_resenas, 0.01)))
+	
+	# Reseñas (Dinámico: Verde o Rojo)
+	lbl_resenas.text = ("+" if monto_resenas >= 0 else "-") + "$" + str(snapped(abs(monto_resenas), 0.01))
+	if monto_resenas >= 0:
+		lbl_resenas.add_theme_color_override("font_color", Color.SPRING_GREEN)
+	else:
+		lbl_resenas.add_theme_color_override("font_color", Color.RED)
+	await get_tree().create_timer(0.4).timeout
+	
+	# Multas (Rojo)
+	lbl_multas.add_theme_color_override("font_color", Color.RED)
 	await mostrar_linea(lbl_multas, "$" + str(total_multas))
 	
 	if sonido_ticket: sonido_ticket.stop()
@@ -97,9 +135,14 @@ func animar_ticket():
 	await get_tree().create_timer(1.2).timeout
 
 	# --- SELLO FINAL Y LÓGICA DE BOTONES ---
-	if dinero_proyectado >= 0:
-		# CASO GANAR: Guardamos y mostramos ambos botones al final
-		GameManager.dinero_actual = dinero_proyectado
+	if balance_final >= 0:
+		# 1. ACTUALIZAMOS LOS DATOS EN EL MANAGER ANTES DE GUARDAR
+		GameManager.dinero_actual = balance_final
+		GameManager.dia_actual += 1  # <--- SUBIMOS EL DÍA AQUÍ
+		
+		
+		
+		# 2. GUARDAMOS EN LA DB (Ahora se guardará con el nuevo día y dinero acumulado)
 		guardar_progreso_en_db()
 		
 		if musica_vic: musica_vic.play()
@@ -113,8 +156,9 @@ func animar_ticket():
 		await aparecer_sello(sello_derrota, escala_original_der)
 		
 		# Reset de datos (se aplicará cuando cree partida nueva o reintente)
-		GameManager.dinero_actual = 500.0
+		GameManager.dinero_actual = 0
 		GameManager.dia_actual = 1
+		GameManager.reputacion_total = 0
 		
 		guardar_progreso_en_db()
 		# NO se sobreescriba con el fracaso y pueda reintentar.
@@ -147,22 +191,27 @@ func sacudir_pantalla():
 	shake.tween_property(self, "offset", Vector2(0, 0), 0.05)
 
 func guardar_progreso_en_db():
-	DatabaseManager.actualizar_progreso(GameManager.slot_seleccionado, GameManager.dinero_actual, GameManager.dia_actual)
+	# Añadimos la reputación al final de la llamada
+	DatabaseManager.actualizar_progreso(
+		GameManager.slot_seleccionado, 
+		GameManager.dinero_actual, 
+		GameManager.dia_actual,
+		GameManager.reputacion_total  # <--- Este es el dato que faltaba
+	)
+	
 	if OS.has_feature("web"):
 		JavaScriptBridge.eval("FS.syncfs(false, function (err) { });")
 
 func _on_continuar_pressed():
 	# Guardado extra por seguridad
-	guardar_progreso_en_db()
+	# guardar_progreso_en_db()
 	
-	GameManager.dia_actual += 1
 	GameManager.ganancias_del_dia = 0.0
 	GameManager.clientes_perdidos = 0
+	GameManager.clientes_atendidos_exito = 0
 	GameManager.total_dinero_multas = 0
 	get_tree().change_scene_to_file("res://Scenas/Tienda.tscn")
 
 func _on_menu_pressed():
 	# Si el jugador ganó, guardamos antes de salir
-	if GameManager.dinero_actual > 500 or GameManager.dia_actual > 1:
-		guardar_progreso_en_db()
 	get_tree().change_scene_to_file("res://Scenas/Menu.tscn")

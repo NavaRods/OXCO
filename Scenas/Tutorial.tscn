@@ -1,0 +1,871 @@
+[gd_scene format=3 uid="uid://bmbqt8k63dxpc"]
+
+[ext_resource type="Script" uid="uid://c437jekov7orj" path="res://Scripts/Tutorial.gd" id="1_3n737"]
+[ext_resource type="Texture2D" uid="uid://b53ha210wgemc" path="res://Sprites/marcooxco.jpg" id="2_yg3rs"]
+[ext_resource type="Texture2D" uid="uid://bvogakqrhs30i" path="res://Sprites/Keyboard Letters and Symbols.png" id="3_waej7"]
+[ext_resource type="Texture2D" uid="uid://c52dirqxp82wh" path="res://Sprites/Keyboard Extras.png" id="4_flfh8"]
+[ext_resource type="VideoStream" uid="uid://c633t12bn0n7t" path="res://Resourse/Gifs/VideoTutorial/Cobro_Player_1.ogv" id="5_3ij6h"]
+[ext_resource type="VideoStream" uid="uid://cvof16q2r6dvn" path="res://Resourse/Gifs/VideoTutorial/Limpieza.ogv" id="6_waej7"]
+[ext_resource type="VideoStream" uid="uid://c2o8mx7hnthoo" path="res://Resourse/Gifs/VideoTutorial/Alerta_Agua.ogv" id="7_flfh8"]
+[ext_resource type="VideoStream" uid="uid://dgsp2l2xctp6v" path="res://Resourse/Gifs/VideoTutorial/Alerta_Luz.ogv" id="8_3ij6h"]
+[ext_resource type="VideoStream" uid="uid://dl78c4l4v1vfl" path="res://Resourse/Gifs/VideoTutorial/Reparacion_Luz_Player1.ogv" id="9_gog75"]
+[ext_resource type="VideoStream" uid="uid://d05ccmmabow2" path="res://Resourse/Gifs/VideoTutorial/Reparacion_Agua_Player1.ogv" id="10_tbq5m"]
+[ext_resource type="VideoStream" uid="uid://bpr5hm7iw1irh" path="res://Resourse/Gifs/VideoTutorial/Reparacion_Agua_Player2.ogv" id="11_dc5rv"]
+[ext_resource type="Texture2D" uid="uid://bc8yp3hwtivgk" path="res://Sprites/button UI.png" id="12_8jw0i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gog75"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbq5m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dc5rv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8jw0i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_01wmx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yt4ww"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vyu26"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g6ogi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_01wmx"]
+texture = ExtResource("12_8jw0i")
+region_rect = Rect2(17.033798, 1.0091318, 13.955181, 13.976826)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yt4ww"]
+texture = ExtResource("12_8jw0i")
+region_rect = Rect2(17.034, 1.009, 13.955, 13.977)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vyu26"]
+texture = ExtResource("12_8jw0i")
+region_rect = Rect2(17.034, 1.009, 13.955, 13.977)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g6ogi"]
+texture = ExtResource("12_8jw0i")
+region_rect = Rect2(17.038197, 97.01771, 13.934748, 13.895599)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0xk8j"]
+texture = ExtResource("12_8jw0i")
+region_rect = Rect2(65.02971, 65.02742, 13.943909, 13.940369)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8jw0i"]
+texture = ExtResource("12_8jw0i")
+region_rect = Rect2(65.03, 65.027, 13.944, 13.94)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r5jub"]
+texture = ExtResource("12_8jw0i")
+region_rect = Rect2(65.03, 65.027, 13.944, 13.94)
+
+[node name="Tutorial" type="CanvasLayer" unique_id=1504830267]
+script = ExtResource("1_3n737")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=591393543]
+offset_left = -84.0
+offset_top = -146.0
+offset_right = 889.0
+offset_bottom = 988.79736
+texture = ExtResource("2_yg3rs")
+metadata/_edit_lock_ = true
+
+[node name="Movimiento" type="Panel" parent="." unique_id=1141895931]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gog75")
+
+[node name="LabelTitulo" type="Label" parent="Movimiento" unique_id=1205281310]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 255.0
+offset_right = 243.0
+offset_bottom = 334.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Movimiento"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Descripcion" type="Label" parent="Movimiento" unique_id=535482944]
+layout_mode = 0
+offset_top = 392.0
+offset_right = 800.0
+offset_bottom = 408.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Movimiento" unique_id=1954622229]
+position = Vector2(195, 484)
+scale = Vector2(5, 5)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(0.5071316, 33.528454, 14.161364, 12.88258)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Movimiento" unique_id=1177806586]
+position = Vector2(264.00003, 418.99997)
+scale = Vector2(5, 5)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(96.46502, 65.66169, 14.052162, 12.721313)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Movimiento" unique_id=1775480505]
+position = Vector2(264, 484)
+scale = Vector2(5, 5)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(32.475815, 65.560555, 14.013023, 12.877892)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Movimiento" unique_id=1686985524]
+position = Vector2(334, 483.99997)
+scale = Vector2(5, 5)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(48.806244, 33.705406, 13.4650345, 12.643036)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Movimiento" unique_id=1471946915]
+position = Vector2(265.00003, 631)
+scale = Vector2(5, 5)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(64.7254, 33.601288, 13.771057, 12.774704)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Movimiento" unique_id=1915390016]
+position = Vector2(558, 419)
+scale = Vector2(5, 5)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(0.70075107, 1.7080389, 13.664311, 12.561203)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Movimiento" unique_id=1276611020]
+position = Vector2(558, 484)
+scale = Vector2(5, 5)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(16.77494, 1.8125436, 13.621613, 12.564761)
+
+[node name="Sprite2D8" type="Sprite2D" parent="Movimiento" unique_id=1433060842]
+position = Vector2(488, 484.00003)
+scale = Vector2(5, 5)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(32.78366, 1.8725135, 13.457279, 12.357406)
+
+[node name="Sprite2D9" type="Sprite2D" parent="Movimiento" unique_id=2021732370]
+position = Vector2(627, 484)
+scale = Vector2(5, 5)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(48.781998, 1.8184359, 13.450813, 12.490043)
+
+[node name="Sprite2D10" type="Sprite2D" parent="Movimiento" unique_id=83622253]
+position = Vector2(559, 631.00006)
+scale = Vector2(5, 5)
+texture = ExtResource("4_flfh8")
+region_enabled = true
+region_rect = Rect2(3.8255916, 33.53603, 24.53379, 12.88261)
+
+[node name="Label" type="Label" parent="Movimiento" unique_id=149020224]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 335.0
+offset_right = 343.0
+offset_bottom = 375.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Player 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Movimiento" unique_id=278800240]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 335.0
+offset_right = 636.0
+offset_bottom = 375.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Player 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Movimiento" unique_id=1962513899]
+layout_mode = 0
+offset_left = 396.0
+offset_top = 321.0
+offset_right = 436.0
+offset_bottom = 529.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 180
+text = "|"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Movimiento" unique_id=570044177]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 548.0
+offset_right = 357.0
+offset_bottom = 592.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Interaccion"
+
+[node name="Label5" type="Label" parent="Movimiento" unique_id=1697197227]
+layout_mode = 0
+offset_left = 468.0
+offset_top = 548.0
+offset_right = 651.0
+offset_bottom = 592.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Interaccion"
+
+[node name="Label6" type="Label" parent="Movimiento" unique_id=2137479812]
+layout_mode = 0
+offset_left = 396.0
+offset_top = 478.0
+offset_right = 436.0
+offset_bottom = 686.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 180
+text = "|"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cobro" type="Panel" parent="." unique_id=335112893]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tbq5m")
+
+[node name="LabelTitulo" type="Label" parent="Cobro" unique_id=1741990129]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 255.0
+offset_right = 243.0
+offset_bottom = 334.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Cobro"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Cobro" unique_id=851442079]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 498.0
+offset_right = 514.0
+offset_bottom = 715.0
+stream = ExtResource("5_3ij6h")
+autoplay = true
+expand = true
+loop = true
+
+[node name="Label" type="Label" parent="Cobro" unique_id=437199732]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 322.0
+offset_right = 653.0
+offset_bottom = 406.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/paragraph_spacing = 5
+theme_override_font_sizes/font_size = 25
+text = "Acercate a la caja y preciona la tecla 
+de interaccion
+Los NPC tienen una barra de paciencia 
+si la paciencia llega a cero el cliente se 
+ira y resiviras una mala reseña"
+vertical_alignment = 1
+
+[node name="Sprite2D5" type="Sprite2D" parent="Cobro" unique_id=1665360109]
+position = Vector2(360.5, 367)
+scale = Vector2(3, 3)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(64.7254, 33.601288, 13.771057, 12.774704)
+
+[node name="Sprite2D10" type="Sprite2D" parent="Cobro" unique_id=640237227]
+position = Vector2(432, 367.00006)
+scale = Vector2(3, 3)
+texture = ExtResource("4_flfh8")
+region_enabled = true
+region_rect = Rect2(3.8255916, 33.53603, 24.53379, 12.88261)
+
+[node name="Limpieza" type="Panel" parent="." unique_id=1179530715]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dc5rv")
+
+[node name="LabelTitulo" type="Label" parent="Limpieza" unique_id=1075778726]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 255.0
+offset_right = 243.0
+offset_bottom = 334.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Limpieza"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Limpieza" unique_id=167367256]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 508.0
+offset_right = 614.0
+offset_bottom = 706.0
+stream = ExtResource("6_waej7")
+autoplay = true
+expand = true
+loop = true
+
+[node name="Label" type="Label" parent="Limpieza" unique_id=640443035]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 322.0
+offset_right = 657.0
+offset_bottom = 474.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/paragraph_spacing = 13
+theme_override_font_sizes/font_size = 25
+text = "Manten la tienda limpia, si no los Clientes
+compraran menos, por lo tanto menos
+ganancias al final del Dia."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Limpieza" unique_id=1513576151]
+layout_mode = 0
+offset_left = 257.0
+offset_top = 480.0
+offset_right = 399.0
+offset_bottom = 506.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/paragraph_spacing = 13
+theme_override_font_sizes/font_size = 25
+text = "Interaccion"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D5" type="Sprite2D" parent="Limpieza" unique_id=470506240]
+position = Vector2(425.5, 491)
+scale = Vector2(3, 3)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(64.7254, 33.601288, 13.771057, 12.774704)
+
+[node name="Sprite2D10" type="Sprite2D" parent="Limpieza" unique_id=1254606758]
+position = Vector2(497, 491.00006)
+scale = Vector2(3, 3)
+texture = ExtResource("4_flfh8")
+region_enabled = true
+region_rect = Rect2(3.8255916, 33.53603, 24.53379, 12.88261)
+
+[node name="AlertaAgua" type="Panel" parent="." unique_id=231196073]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8jw0i")
+
+[node name="LabelTitulo" type="Label" parent="AlertaAgua" unique_id=1869072791]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 255.0
+offset_right = 243.0
+offset_bottom = 334.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Alerta de Limpieza"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="AlertaAgua" unique_id=533361413]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 338.0
+offset_right = 313.0
+offset_bottom = 364.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/paragraph_spacing = 13
+theme_override_font_sizes/font_size = 25
+text = "Si hay una "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="AlertaAgua" unique_id=1557900134]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 371.0
+offset_right = 313.0
+offset_bottom = 397.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/paragraph_spacing = 1
+theme_override_font_sizes/font_size = 25
+text = "NO podras limpiar la tienda hasta que
+sea reparada. Con el Fallo Activo
+la paciciencia de los Clientes bajara 
+el doble de rapido"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="AlertaAgua" unique_id=2065633566]
+layout_mode = 0
+offset_left = 314.0
+offset_top = 338.0
+offset_right = 630.0
+offset_bottom = 364.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/paragraph_spacing = 13
+theme_override_font_sizes/font_size = 25
+text = "ALERTA: FALLO DE AGUA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AlertaAgua" unique_id=918005891]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 489.0
+offset_right = 591.22046
+offset_bottom = 719.0
+stream = ExtResource("7_flfh8")
+autoplay = true
+expand = true
+loop = true
+
+[node name="AlertaLuz" type="Panel" parent="." unique_id=1411129389]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_01wmx")
+
+[node name="LabelTitulo" type="Label" parent="AlertaLuz" unique_id=2047662465]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 255.0
+offset_right = 243.0
+offset_bottom = 334.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Alerta de Luz"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="AlertaLuz" unique_id=586312852]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 338.0
+offset_right = 313.0
+offset_bottom = 364.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/paragraph_spacing = 13
+theme_override_font_sizes/font_size = 25
+text = "Si hay una "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="AlertaLuz" unique_id=1787072568]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 371.0
+offset_right = 313.0
+offset_bottom = 397.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/paragraph_spacing = 13
+theme_override_font_sizes/font_size = 25
+text = "NO podras realizar cobros en caja 
+hasta que no sea reparada."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="AlertaLuz" unique_id=2118904293]
+layout_mode = 0
+offset_left = 314.0
+offset_top = 338.0
+offset_right = 630.0
+offset_bottom = 364.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/paragraph_spacing = 13
+theme_override_font_sizes/font_size = 25
+text = "ALERTA: FALLO EN LUZ"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AlertaLuz" unique_id=629125448]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 452.0
+offset_right = 614.0
+offset_bottom = 706.0
+stream = ExtResource("8_3ij6h")
+autoplay = true
+expand = true
+loop = true
+
+[node name="ReparacionLuz" type="Panel" parent="." unique_id=914744061]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yt4ww")
+
+[node name="LabelTitulo" type="Label" parent="ReparacionLuz" unique_id=1464260861]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 255.0
+offset_right = 243.0
+offset_bottom = 334.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Reparar Luz"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="ReparacionLuz" unique_id=1090674724]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 338.0
+offset_right = 313.0
+offset_bottom = 364.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/paragraph_spacing = 13
+theme_override_font_sizes/font_size = 25
+text = "Debes dirigirte a la marca amarilla e
+interactuar con 
+puede reparar la LUZ, para repararla
+debes completar una combinacion
+de teclas 5 aleatorias"
+vertical_alignment = 1
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="ReparacionLuz" unique_id=202636546]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 536.0
+offset_right = 614.0
+offset_bottom = 723.0
+stream = ExtResource("9_gog75")
+autoplay = true
+expand = true
+loop = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="ReparacionLuz" unique_id=1430179583]
+position = Vector2(402.5, 387)
+scale = Vector2(3, 3)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(64.7254, 33.601288, 13.771057, 12.774704)
+
+[node name="Label2" type="Label" parent="ReparacionLuz" unique_id=1023490337]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 380.0
+offset_right = 639.0
+offset_bottom = 406.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/paragraph_spacing = 13
+theme_override_font_sizes/font_size = 25
+text = "solo el Player 1"
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ReparacionLuz" unique_id=1405506672]
+position = Vector2(512, 513)
+scale = Vector2(3, 3)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(0.5071316, 33.528454, 14.161364, 12.88258)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ReparacionLuz" unique_id=1359755047]
+position = Vector2(470, 513)
+scale = Vector2(3, 3)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(96.46502, 65.66169, 14.052162, 12.721313)
+
+[node name="Sprite2D3" type="Sprite2D" parent="ReparacionLuz" unique_id=1176823868]
+position = Vector2(553, 513)
+scale = Vector2(3, 3)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(32.475815, 65.560555, 14.013023, 12.877892)
+
+[node name="Sprite2D4" type="Sprite2D" parent="ReparacionLuz" unique_id=693069327]
+position = Vector2(594, 513)
+scale = Vector2(3, 3)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(48.806244, 33.705406, 13.4650345, 12.643036)
+
+[node name="ReparacionAguaP1" type="Panel" parent="." unique_id=1754104265]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vyu26")
+
+[node name="LabelTitulo" type="Label" parent="ReparacionAguaP1" unique_id=1557531950]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 255.0
+offset_right = 243.0
+offset_bottom = 334.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Reparar AGUA
+MODO 1 JUGADOR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="ReparacionAguaP1" unique_id=1135249262]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 370.0
+offset_right = 631.0
+offset_bottom = 425.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Debes acercarte a la marca del Agua
+e Interactuar "
+
+[node name="Label4" type="Label" parent="ReparacionAguaP1" unique_id=727400303]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 427.0
+offset_right = 631.0
+offset_bottom = 482.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "para repararla debes seguir una serie
+de 5 teclas aleatorias "
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="ReparacionAguaP1" unique_id=1674545031]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 496.0
+offset_right = 660.05347
+offset_bottom = 723.0
+stream = ExtResource("10_tbq5m")
+autoplay = true
+expand = true
+loop = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="ReparacionAguaP1" unique_id=716702002]
+position = Vector2(371, 410)
+scale = Vector2(3, 3)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(64.7254, 33.601288, 13.771057, 12.774704)
+
+[node name="Sprite2D6" type="Sprite2D" parent="ReparacionAguaP1" unique_id=737560348]
+position = Vector2(460, 470)
+scale = Vector2(3, 3)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(0.70075107, 1.7080389, 13.664311, 12.561203)
+
+[node name="Sprite2D7" type="Sprite2D" parent="ReparacionAguaP1" unique_id=1078734537]
+position = Vector2(503, 470.00003)
+scale = Vector2(3, 3)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(16.77494, 1.8125436, 13.621613, 12.564761)
+
+[node name="Sprite2D8" type="Sprite2D" parent="ReparacionAguaP1" unique_id=1063659098]
+position = Vector2(545, 470)
+scale = Vector2(3, 3)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(32.78366, 1.8725135, 13.457279, 12.357406)
+
+[node name="Sprite2D9" type="Sprite2D" parent="ReparacionAguaP1" unique_id=658615824]
+position = Vector2(587, 470.00003)
+scale = Vector2(3, 3)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(48.781998, 1.8184359, 13.450813, 12.490043)
+
+[node name="ReparacionAguaP2" type="Panel" parent="." unique_id=1380546886]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_g6ogi")
+
+[node name="LabelTitulo" type="Label" parent="ReparacionAguaP2" unique_id=1663590179]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 255.0
+offset_right = 243.0
+offset_bottom = 334.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Reparar AGUA
+MODO 2 JUGADORES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="ReparacionAguaP2" unique_id=1456404134]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 370.0
+offset_right = 631.0
+offset_bottom = 425.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Debes acercarte a la marca del Agua
+e Interactuar "
+
+[node name="Label4" type="Label" parent="ReparacionAguaP2" unique_id=419836899]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 427.0
+offset_right = 631.0
+offset_bottom = 482.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "para repararla debes seguir una serie
+de 5 teclas aleatorias "
+
+[node name="Label" type="Label" parent="ReparacionAguaP2" unique_id=917262921]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 500.0
+offset_right = 572.0
+offset_bottom = 520.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Solo el JUGADOR 2 puede repararlo"
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="ReparacionAguaP2" unique_id=642641060]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 527.0
+offset_right = 619.262
+offset_bottom = 723.0
+stream = ExtResource("11_dc5rv")
+autoplay = true
+expand = true
+loop = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="ReparacionAguaP2" unique_id=970613179]
+position = Vector2(382, 410)
+scale = Vector2(3, 3)
+texture = ExtResource("4_flfh8")
+region_enabled = true
+region_rect = Rect2(3.7726917, 33.746758, 24.561403, 12.585812)
+
+[node name="Sprite2D6" type="Sprite2D" parent="ReparacionAguaP2" unique_id=1607811228]
+position = Vector2(460, 470)
+scale = Vector2(3, 3)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(0.70075107, 1.7080389, 13.664311, 12.561203)
+
+[node name="Sprite2D7" type="Sprite2D" parent="ReparacionAguaP2" unique_id=639595362]
+position = Vector2(503, 470.00003)
+scale = Vector2(3, 3)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(16.77494, 1.8125436, 13.621613, 12.564761)
+
+[node name="Sprite2D8" type="Sprite2D" parent="ReparacionAguaP2" unique_id=449209644]
+position = Vector2(545, 470)
+scale = Vector2(3, 3)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(32.78366, 1.8725135, 13.457279, 12.357406)
+
+[node name="Sprite2D9" type="Sprite2D" parent="ReparacionAguaP2" unique_id=1605322353]
+position = Vector2(587, 470.00003)
+scale = Vector2(3, 3)
+texture = ExtResource("3_waej7")
+region_enabled = true
+region_rect = Rect2(48.781998, 1.8184359, 13.450813, 12.490043)
+
+[node name="BtnSiguiente" type="Button" parent="." unique_id=544524845]
+offset_left = 678.0
+offset_top = 392.0
+offset_right = 708.0
+offset_bottom = 422.0
+scale = Vector2(4, 4)
+theme_override_styles/normal = SubResource("StyleBoxTexture_01wmx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yt4ww")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vyu26")
+
+[node name="BtnAtras" type="Button" parent="." unique_id=1373756503]
+offset_left = 122.0
+offset_top = 512.0
+offset_right = 152.0
+offset_bottom = 542.0
+rotation = 3.1415927
+scale = Vector2(4, 4)
+theme_override_styles/normal = SubResource("StyleBoxTexture_g6ogi")
+
+[node name="BtnSalir" type="Button" parent="." unique_id=509832297]
+offset_right = 30.0
+offset_bottom = 30.0
+scale = Vector2(3, 3)
+theme_override_styles/normal = SubResource("StyleBoxTexture_0xk8j")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8jw0i")
+theme_override_styles/hover = SubResource("StyleBoxTexture_r5jub")
+
+[connection signal="pressed" from="BtnSiguiente" to="." method="_on_btn_siguiente_pressed"]
+[connection signal="pressed" from="BtnAtras" to="." method="_on_btn_atras_pressed"]
+[connection signal="pressed" from="BtnSalir" to="." method="_on_btn_salir_pressed"]

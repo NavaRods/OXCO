@@ -137,12 +137,35 @@ func actualizar_animaciones():
 func procesar_paciencia(delta):
 	if esperando_en_caja and not pago_completado:
 		var servicios = tienda.get_node("Servicios")
-		var multiplicador = 1.0
+		
+		# --- MULTIPLICADORES DE DIFICULTAD ---
+		
+		# 1. Multiplicador por falta de servicios (Agua)
+		var mult_servicios = 1.0
 		if servicios and not servicios.agua_activa:
-			multiplicador = 2.0
-		paciencia -= (velocidad_paciencia * multiplicador) * delta
+			mult_servicios = 2.0
+			
+		# 2. Multiplicador por Reputación (Estrellas)
+		# A más fama, menos paciencia tienen los clientes
+		var mult_reputacion = GameManager.obtener_multiplicador_paciencia()
+		
+		# Aplicamos ambos multiplicadores a la velocidad base
+		var reduccion = velocidad_paciencia * mult_servicios * mult_reputacion
+		
+		paciencia -= reduccion * delta
+		
+		# --- ACTUALIZACIÓN VISUAL ---
 		if barra_paciencia:
 			barra_paciencia.value = paciencia
+			
+			# Opcional: Cambiar color de la barra según el estrés
+			if paciencia < 30:
+				barra_paciencia.modulate = Color.RED
+			elif paciencia < 60:
+				barra_paciencia.modulate = Color.ORANGE
+			else:
+				barra_paciencia.modulate = Color.GREEN
+
 		if paciencia <= 0:
 			abandonar_por_enojo()
 
@@ -152,6 +175,7 @@ func abandonar_por_enojo():
 		tienda.registrar_cliente_perdido()
 	
 	# 2. Lo sacamos de la fila de la caja
+	mostrar_feedback_visual("😡 Reseña -1", Color.RED)
 	tienda.quitar_de_fila(self)
 	
 	# 3. Marcamos como "completado" para que la lógica de ir_al_siguiente_punto
@@ -162,6 +186,37 @@ func abandonar_por_enojo():
 	modulate = Color(1, 0.5, 0.5) 
 	
 	ir_al_siguiente_punto()
+
+func mostrar_feedback_visual(texto: String, color: Color):
+	var label = get_node_or_null("LabelFeedback")
+	if not label: return
+	
+	# Configurar el texto y color
+	label.text = texto
+	label.modulate = color
+	label.visible = true
+	label.modulate.a = 1.0 # Asegurar que sea opaco al inicio
+	
+	# Reiniciar posición por si acaso (un poco arriba de su cabeza)
+	# label.position = Vector2(-20, -60) 
+	
+	# Crear la animación de flotar y desvanecerse
+	var tween = create_tween().set_parallel(true)
+	# Sube 40 píxeles
+	tween.tween_property(label, "position:y", label.position.y - 40, 1.2)
+	# Se vuelve transparente
+	tween.parallel().tween_property(label, "modulate:a", 0.0, 1.2)
+	
+	# Al terminar, lo ocultamos de nuevo
+	await tween.finished
+	label.visible = false
+
+func cobrar_exitoso(monto: float, es_buena_resena: bool):
+	# Si fue una buena reseña (menos del 50% de descuento)
+	if es_buena_resena:
+		mostrar_feedback_visual("⭐ +1 Reseña\n+$" + str(snapped(monto, 0.01)), Color.GOLD)
+	else:
+		mostrar_feedback_visual("+$" + str(snapped(monto, 0.01)), Color.SPRING_GREEN)
 
 func _physics_process(_delta):
 	if objetivo_actual == Vector2.ZERO or puntos_ruta.size() == 0: 

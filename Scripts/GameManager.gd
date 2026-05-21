@@ -4,7 +4,7 @@ var slot_seleccionado: int = 1
 var solo_un_jugador: bool = true
 var p1_actual: String = ""
 var p2_actual: String = ""
-var dinero_actual: float = 500.0
+var dinero_actual: float = 0
 var popup_creacion = null
 var hora_actual: int = 8
 var minutos_actuales: int = 0
@@ -18,6 +18,8 @@ var ganancias_del_dia: float = 0.0
 var clientes_perdidos: int = 0
 var niveles_suciedad_acumulados: int = 0
 var total_dinero_multas: int = 0
+var clientes_atendidos_exito: int = 0
+var reputacion_total: float = 0.0 # Persistente entre días
 
 # Reloj de la Jornada (El que usará la Tienda)
 var reloj_jornada_horas: int = 8
@@ -30,6 +32,7 @@ func cargar_partida(slot):
 		p2_actual = datos["p2_name"]
 		dinero_actual = datos["money"]
 		dia_actual = datos["day"]
+		reputacion_total = datos["reputation"]
 		
 		# --- CAMBIO AQUÍ: Determinamos si es un solo jugador según el nombre guardado ---
 		if p2_actual == "N/A" or p2_actual == "":
@@ -39,3 +42,31 @@ func cargar_partida(slot):
 		
 		print("Cargando partida de: ", p1_actual, " | Solo un jugador: ", solo_un_jugador)
 		get_tree().change_scene_to_file("res://Scenas/Tienda.tscn")
+
+func obtener_estrellas_actuales() -> int:
+	return int(clamp(reputacion_total / 50.0, 0, 5))
+
+# Dificultad basada en las estrellas (3 o más = Difícil, 5 = Extremo)
+func obtener_nivel_dificultad() -> int:
+	var estrellas = obtener_estrellas_actuales()
+	if estrellas >= 5: return 2 # Extremo
+	if estrellas >= 3: return 1 # Difícil
+	return 0 # Normal
+
+func obtener_multiplicador_spawn() -> float:
+	var nivel = obtener_nivel_dificultad()
+	if nivel == 2: return 0.5 # NPCs salen el doble de rápido
+	if nivel == 1: return 0.75 # NPCs salen 25% más rápido
+	return 1.0
+
+func obtener_multiplicador_averias() -> float:
+	var nivel = obtener_nivel_dificultad()
+	if nivel == 2: return 0.6
+	if nivel == 1: return 0.8
+	return 1.0
+
+func obtener_multiplicador_paciencia() -> float:
+	var estrellas = obtener_estrellas_actuales()
+	if estrellas >= 5: return 1.8  # Casi el doble de rápido (Extremo)
+	if estrellas >= 3: return 1.4  # 40% más rápido (Difícil)
+	return 1.0                     # Paciencia normal (0-2 estrellas)

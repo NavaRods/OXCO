@@ -967,5 +967,5 @@ position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_oew7p")
 
 [node name="TeclaFlotante" parent="." unique_id=588581146 instance=ExtResource("3_b8npl")]
-z_index = 4
+z_index = 7
 position = Vector2(-24, -30)

@@ -36,6 +36,6 @@ func _on_btn_confirmar_pressed():
 	self.hide()
 	
 	get_tree().call_group("botones_slots", "actualizar_info_visual")
-	GameManager.dinero_actual = 500
+	GameManager.dinero_actual = 0
 	GameManager.dia_actual = 1
 	get_tree().change_scene_to_file("res://Scenas/Tienda.tscn")

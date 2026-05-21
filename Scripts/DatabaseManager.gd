@@ -20,7 +20,8 @@ func _ready():
 			"p1_name": {"data_type": "text"},
 			"p2_name": {"data_type": "text"},
 			"money": {"data_type": "float"},
-			"day": {"data_type": "int"}
+			"day": {"data_type": "int"},
+			"reputation": {"data_type": "float"}
 		}
 		db.create_table("save_slots", table_dict)
 		_sync_db_web()
@@ -52,7 +53,8 @@ func guardar_nueva_partida(index: int, p1: String, p2: String):
 		"p1_name": p1,
 		"p2_name": p2 if p2 != "" else "N/A",
 		"money": GameManager.dinero_actual,
-		"day": GameManager.dia_actual
+		"day": GameManager.dia_actual,
+		"reputation": 0.0
 	}
 	
 	# Verificamos si el slot ya existe
@@ -71,11 +73,10 @@ func guardar_nueva_partida(index: int, p1: String, p2: String):
 
 # --- GUARDAR PROGRESO (Fin de día o Resultados) ---
 # Esta función es la que llamarás desde el GameManager al final del día
-func actualizar_progreso(index: int, dinero: float, dia: int):
-	var query = "UPDATE save_slots SET money = " + str(dinero) + ", day = " + str(dia) + " WHERE id = " + str(index) + ";"
+func actualizar_progreso(index: int, dinero: float, dia: int, reputacion: float):
+	var query = "UPDATE save_slots SET money = %f, day = %d, reputation = %f WHERE id = %d;" % [dinero, dia, reputacion, index]
 	db.query(query)
 	_sync_db_web()
-	print("Base de Datos: Progreso guardado (Dinero: ", dinero, " Día: ", dia, ")")
 
 # --- ELIMINAR PARTIDA ---
 func eliminar_partida(index: int) -> bool:

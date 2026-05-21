@@ -16,6 +16,8 @@ var jugador_en_posicion: bool = false
 @onready var menu_config = $MenuConfiguracion # Asegúrate de que el nombre coincida
 @onready var btn_config = $BotonConfig      # Tu botón en la interfaz de la tienda
 @onready var sonido_caja = $SonidoCaja
+@onready var marca_luz = $MarcaLuz
+@onready var marca_agua = $MarcaAgua
 
 var p1_en_caja: bool = false
 var p2_en_caja: bool = false
@@ -32,6 +34,11 @@ var zona_limpieza_actual: String = ""
 func _ready():
 	$MusicaTienda.play()
 	menu_config.hide()
+	marca_luz.hide()
+	marca_agua.hide()
+	
+	animar_marcas_bucle()
+	
 	if fundido_negro: fundido_negro.modulate.a = 0 # Empezamos con pantalla clara
 	
 	btn_config.pressed.connect(_on_boton_config_pressed)
@@ -41,6 +48,7 @@ func _ready():
 	GameManager.ganancias_del_dia = 0 # Reset ganancias al empezar el día
 	GameManager.juego_pausado = false
 	GameManager.total_dinero_multas = 0
+	GameManager.clientes_atendidos_exito = 0
 	
 	if ui:
 		ui.actualizar_datos_generales()
@@ -211,6 +219,7 @@ func _on_spawn_timer_timeout():
 	spawn_npc()
 
 func spawn_npc():
+	
 	if jornada_finalizada: return
 	if npc_escena:
 		
@@ -254,8 +263,11 @@ func _process(_delta):
 					servicios.iniciar_reparacion("LUZ")
 				elif zona_donde_esta_p1 != "":
 					ejecutar_limpieza(zona_donde_esta_p1)
-				elif p1_en_caja and fila_caja.size() > 0 and servicios.luz_activa:
-					realizar_cobro()
+				elif p1_en_caja and fila_caja.size() > 0:
+					if servicios.luz_activa:
+						realizar_cobro()
+					else:
+						crear_notificacion_temporal("¡No hay Sistema!", Color.ORANGE_RED)
 				elif GameManager.solo_un_jugador and p2_en_agua and not servicios.agua_activa:
 					servicios.iniciar_reparacion("AGUA")
 
@@ -274,8 +286,34 @@ func _process(_delta):
 					servicios.iniciar_reparacion("AGUA")
 				elif zona_donde_esta_p2 != "":
 					ejecutar_limpieza(zona_donde_esta_p2)
-				elif p2_en_caja and fila_caja.size() > 0 and servicios.luz_activa:
-					realizar_cobro()
+				elif p2_en_caja and fila_caja.size() > 0:
+					if servicios.luz_activa:
+						realizar_cobro()
+					else:
+						crear_notificacion_temporal("¡No hay Sistema!", Color.ORANGE_RED)
+	
+	# --- LÓGICA DE VISIBILIDAD DE MARCAS (ACTUALIZADA) ---
+	
+	# 1. VISIBILIDAD DE LUZ
+	# Se muestra si la luz falló Y P1 no está reparándola
+	var p1_reparando_luz = p1 and p1.esta_reparando and servicios.reparaciones_activas.has("LUZ")
+	
+	if not servicios.luz_activa and not p1_reparando_luz:
+		if not marca_luz.visible: marca_luz.show()
+	else:
+		if marca_luz.visible: marca_luz.hide()
+
+	# 2. VISIBILIDAD DE AGUA
+	# Se muestra si el agua falló Y nadie la está reparando
+	var p2_reparando_agua = p2 and p2.esta_reparando and servicios.reparaciones_activas.has("AGUA")
+	var p1_reparando_agua_solo = GameManager.solo_un_jugador and p1 and p1.esta_reparando and servicios.reparaciones_activas.has("AGUA")
+	
+	var alguien_repara_agua = p2_reparando_agua or p1_reparando_agua_solo
+
+	if not servicios.agua_activa and not alguien_repara_agua:
+		if not marca_agua.visible: marca_agua.show()
+	else:
+		if marca_agua.visible: marca_agua.hide()
 
 func registrar_suciedad_npc(npc, nombre_zona: String):
 	var nombre_mueble = nombre_zona.replace("Zona", "")
@@ -323,6 +361,16 @@ func ejecutar_limpieza(nombre_mueble: String):
 		print("LOG: ", nombre_mueble, " ha sido limpiado por el jugador.")
 
 func realizar_cobro():
+	# Aseguramos que el valor no se salga de 0 a 5
+	# GameManager.reputacion_total = clamp(GameManager.reputacion_total, 0.0, 5.0)
+	# VALIDACIÓN DE LUZ: Aquí es donde el sistema "se cae"
+	if not servicios.luz_activa:
+		# Creamos el feedback visual sobre la caja o el jugador
+		# Usaremos una lógica similar a mostrar_feedback_visual de los NPCs
+		crear_notificacion_temporal("¡No hay sistema!", Color.RED)
+		print("COBRO FALLIDO: No hay luz para usar la caja.")
+		return # Detiene el proceso de cobro
+	
 	if fila_caja.size() > 0:
 		var npc = fila_caja[0]
 		var subtotal = npc.presupuesto_inicial
@@ -340,16 +388,56 @@ func realizar_cobro():
 		
 		var total_pagado = subtotal * (1.0 - descuento_total_porcentaje)
 		
+		# Actualizar datos globales
 		GameManager.dinero_actual += total_pagado
 		GameManager.ganancias_del_dia += total_pagado
+		
+		# --- NUEVA LÓGICA DE FEEDBACK EN EL NPC ---
+		var es_buena_resena = descuento_total_porcentaje < 0.50
+		
+		if es_buena_resena:
+			GameManager.clientes_atendidos_exito += 1 # Para el ticket de hoy
+		
+		# Llamamos a la función dentro del NPC para que muestre su Label
+		if npc.has_method("cobrar_exitoso"):
+			npc.cobrar_exitoso(total_pagado, es_buena_resena)
+		# ------------------------------------------
+
 		print("PAGO: Presupuesto original $", subtotal, " | Descuento: ", descuento_total_porcentaje*100, "% | Total: $", total_pagado)
 		
-		if ui: ui.mostrar_pago(total_pagado)
+		# Actualizar UI General
+		if ui: 
+			ui.actualizar_datos_generales()
+			# Si prefieres que el texto de dinero siga saliendo en la UI central, mantén esta línea:
+			ui.mostrar_pago(total_pagado)
 		
 		sonido_caja.play()
 		
+		# Finalizar proceso
 		npc.pago_completado = true
 		fila_caja.pop_front()
+
+func crear_notificacion_temporal(texto: String, color: Color):
+	var label = Label.new()
+	label.text = texto
+	label.modulate = color
+	label.z_index = 11
+	# Lo posicionamos cerca de la zona de cobro (ajusta la posición a tu mapa)
+	label.global_position = $ZonaCobro.global_position + Vector2(-50, -40)
+	
+	# Añadimos un poco de estilo (opcional si tienes un tema)
+	label.add_theme_font_size_override("font_size", 20)
+	
+	add_child(label)
+	
+	# Animación de flotar y desaparecer (estilo Reseña)
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(label, "position:y", label.position.y - 50, 1.0)
+	tween.tween_property(label, "modulate:a", 0.0, 1.0)
+	
+	# Limpiar el nodo cuando termine la animación
+	await tween.finished
+	label.queue_free()
 
 func quitar_de_fila(npc):
 	if fila_caja.has(npc):
@@ -389,3 +477,12 @@ func _on_boton_config_pressed():
 func registrar_cliente_perdido():
 	GameManager.clientes_perdidos += 1
 	print("SISTEMA: Cliente se fue molesto. Total hoy: ", GameManager.clientes_perdidos)
+
+func animar_marcas_bucle():
+	var tween = create_tween().set_loops() # Bucle infinito
+	# Hacemos que ambas suban y bajen 10 píxeles sutilmente
+	tween.tween_property(marca_luz, "position:y", marca_luz.position.y - 10, 0.6).set_trans(Tween.TRANS_SINE)
+	tween.parallel().tween_property(marca_agua, "position:y", marca_agua.position.y - 10, 0.6).set_trans(Tween.TRANS_SINE)
+	
+	tween.tween_property(marca_luz, "position:y", marca_luz.position.y, 0.6).set_trans(Tween.TRANS_SINE)
+	tween.parallel().tween_property(marca_agua, "position:y", marca_agua.position.y, 0.6).set_trans(Tween.TRANS_SINE)

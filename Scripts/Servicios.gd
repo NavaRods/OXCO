@@ -40,6 +40,7 @@ func _ready():
 
 # --- TEMPORIZADORES Y AVERÍAS (Sin cambios) ---
 func esperar_averia_luz():
+	
 	# El segundo parámetro 'false' hace que el timer se DETENGA en pausa
 	await get_tree().create_timer(randf_range(20.0, 40.0), false).timeout
 	# Doble seguridad: si al terminar el tiempo estamos en pausa, no averiar
@@ -51,6 +52,7 @@ func esperar_averia_luz():
 		esperar_averia_luz()
 
 func esperar_averia_agua():
+	if true: return # Recuerda quitar esta lineassss
 	await get_tree().create_timer(randf_range(25.0, 50.0), false).timeout
 	if not GameManager.juego_pausado:
 		averiar_agua()

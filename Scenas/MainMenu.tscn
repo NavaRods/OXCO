@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://102rfwfnlvvv" path="res://Sounds/SonidosInternos/Seleccionar.wav" id="7_exg4h"]
 [ext_resource type="AudioStream" uid="uid://cit85kfopsqyx" path="res://Sounds/SonidosExternos/Sonido_Fondo.wav" id="7_gc6ug"]
 [ext_resource type="AudioStream" uid="uid://b6282cup063vk" path="res://Sounds/SonidosInternos/click2.wav" id="9_exg4h"]
+[ext_resource type="Texture2D" uid="uid://dcpe5g2yph8x2" path="res://Sprites/CartelTutorial.png" id="10_75irm"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gc6ug"]
 texture = ExtResource("3_sgguy")
@@ -29,6 +30,26 @@ texture = ExtResource("4_sgguy")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gc6ug"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k164k"]
+texture = ExtResource("3_sgguy")
+region_rect = Rect2(65.03779, 65.024086, 13.882561, 13.896194)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4rfjh"]
+texture = ExtResource("3_sgguy")
+region_rect = Rect2(65.038, 65.024, 13.883, 13.896)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j68vi"]
+texture = ExtResource("3_sgguy")
+region_rect = Rect2(65.038, 65.024, 13.883, 13.896)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k164k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4rfjh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j68vi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ub02b"]
 
 [node name="MainMenu" type="Control" unique_id=881554070]
 layout_mode = 3
@@ -68,15 +89,16 @@ offset_left = -366.0
 offset_top = -123.0
 offset_right = -136.0
 offset_bottom = 192.0
+theme_override_font_sizes/font_size = 25
 script = ExtResource("1_20ll7")
 boton_borrar_vinculado = NodePath("../BtnBorrarSlot")
 
 [node name="BtnBorrarSlot" type="Button" parent="HBoxContainer/PanelContainer" unique_id=2066875916]
 layout_mode = 0
 offset_left = -275.0
-offset_top = 102.0
+offset_top = 135.0
 offset_right = -225.0
-offset_bottom = 152.0
+offset_bottom = 185.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_gc6ug")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_exg4h")
 theme_override_styles/hover = SubResource("StyleBoxTexture_75irm")
@@ -92,6 +114,7 @@ offset_left = -113.0
 offset_top = -123.0
 offset_right = 117.0
 offset_bottom = 192.0
+theme_override_font_sizes/font_size = 25
 script = ExtResource("1_20ll7")
 slot_index = 2
 boton_borrar_vinculado = NodePath("../BtnBorrarSlot")
@@ -99,9 +122,9 @@ boton_borrar_vinculado = NodePath("../BtnBorrarSlot")
 [node name="BtnBorrarSlot" type="Button" parent="HBoxContainer/PanelContainer2" unique_id=1648055563]
 layout_mode = 0
 offset_left = -20.0
-offset_top = 102.0
+offset_top = 135.0
 offset_right = 30.0
-offset_bottom = 152.0
+offset_bottom = 185.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_gc6ug")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_exg4h")
 theme_override_styles/hover = SubResource("StyleBoxTexture_75irm")
@@ -117,6 +140,7 @@ offset_left = 144.0
 offset_top = -123.0
 offset_right = 374.0
 offset_bottom = 192.0
+theme_override_font_sizes/font_size = 25
 script = ExtResource("1_20ll7")
 slot_index = 3
 boton_borrar_vinculado = NodePath("../BtnBorrarSlot")
@@ -124,9 +148,9 @@ boton_borrar_vinculado = NodePath("../BtnBorrarSlot")
 [node name="BtnBorrarSlot" type="Button" parent="HBoxContainer/PanelContainer3" unique_id=689620154]
 layout_mode = 0
 offset_left = 235.0
-offset_top = 102.0
+offset_top = 135.0
 offset_right = 285.0
-offset_bottom = 152.0
+offset_bottom = 185.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_gc6ug")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_exg4h")
 theme_override_styles/hover = SubResource("StyleBoxTexture_75irm")
@@ -134,10 +158,10 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_75irm")
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=567382120]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.29625
-anchor_top = 0.13625
-anchor_right = 0.865
-anchor_bottom = 0.1925
+anchor_left = 0.2775
+anchor_top = 0.1275
+anchor_right = 0.84625
+anchor_bottom = 0.21125
 grow_horizontal = 2
 size_flags_horizontal = 4
 alignment = 1
@@ -147,7 +171,8 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-text = "Pasa a Caja a Crear tu Partida"
+text = "Elige una Caja para iniciar 
+tu Turno"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -195,6 +220,14 @@ theme_override_constants/margin_bottom = 55
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Popup1/PopupPanel/MarginContainer" unique_id=1395715573]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="Popup1/PopupPanel/MarginContainer/VBoxContainer" unique_id=664496003]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Introduce Nombre
+de Usuario"
+horizontal_alignment = 1
 
 [node name="InputP1" type="LineEdit" parent="Popup1/PopupPanel/MarginContainer/VBoxContainer" unique_id=1767067766]
 layout_mode = 2
@@ -283,6 +316,14 @@ theme_override_constants/margin_bottom = 55
 [node name="VBoxContainer" type="VBoxContainer" parent="Popup2/PopupPanel/MarginContainer" unique_id=1935841813]
 layout_mode = 2
 
+[node name="Label" type="Label" parent="Popup2/PopupPanel/MarginContainer/VBoxContainer" unique_id=2032724751]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Introduce Nombre
+de Usuario"
+horizontal_alignment = 1
+
 [node name="InputP1" type="LineEdit" parent="Popup2/PopupPanel/MarginContainer/VBoxContainer" unique_id=1510779393]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -370,6 +411,14 @@ theme_override_constants/margin_bottom = 55
 [node name="VBoxContainer" type="VBoxContainer" parent="Popup3/PopupPanel/MarginContainer" unique_id=896961490]
 layout_mode = 2
 
+[node name="Label" type="Label" parent="Popup3/PopupPanel/MarginContainer/VBoxContainer" unique_id=406161553]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Introduce Nombre
+de Usuario"
+horizontal_alignment = 1
+
 [node name="InputP1" type="LineEdit" parent="Popup3/PopupPanel/MarginContainer/VBoxContainer" unique_id=1717222266]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -426,6 +475,58 @@ stream = ExtResource("9_exg4h")
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="." unique_id=850470388]
 
+[node name="BtnSalir" type="Button" parent="." unique_id=605669642]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 664.0
+offset_right = 212.0
+offset_bottom = 714.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_k164k")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4rfjh")
+theme_override_styles/hover = SubResource("StyleBoxTexture_j68vi")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=254594393]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 813.0
+offset_right = 402.0
+offset_bottom = 853.0
+color = Color(1, 0.32156864, 0.27058825, 1)
+
+[node name="SalirTienda" type="Label" parent="." unique_id=1708423510]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 640.0
+offset_right = 144.0
+offset_bottom = 777.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "Salir 
+de la ➡️
+Tienda
+"
+horizontal_alignment = 1
+
+[node name="CartelTutorial" type="Sprite2D" parent="." unique_id=879685271]
+position = Vector2(676, 746)
+scale = Vector2(0.25833333, 0.25833333)
+texture = ExtResource("10_75irm")
+
+[node name="ButtonTutorial" type="Button" parent="." unique_id=1923397151]
+layout_mode = 0
+offset_left = 594.0
+offset_top = 675.0
+offset_right = 760.0
+offset_bottom = 796.0
+theme_override_colors/font_color = Color(1, 0, 0.019607844, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k164k")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4rfjh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_j68vi")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ub02b")
+
 [connection signal="mouse_entered" from="HBoxContainer/PanelContainer/SlotButton1" to="HBoxContainer/PanelContainer/SlotButton1" method="_on_mouse_entered"]
 [connection signal="pressed" from="HBoxContainer/PanelContainer/SlotButton1" to="HBoxContainer/PanelContainer/SlotButton1" method="_on_pressed"]
 [connection signal="pressed" from="HBoxContainer/PanelContainer/BtnBorrarSlot" to="HBoxContainer/PanelContainer/SlotButton1" method="_on_btn_borrar_pressed"]
@@ -444,3 +545,5 @@ stream = ExtResource("9_exg4h")
 [connection signal="toggled" from="Popup3/PopupPanel/MarginContainer/VBoxContainer/CheckMultiplayer" to="Popup3" method="_on_check_multiplayer_toggled"]
 [connection signal="pressed" from="Popup3/PopupPanel/MarginContainer/VBoxContainer/BtnConfirmar" to="Popup3" method="_on_btn_confirmar_pressed"]
 [connection signal="pressed" from="Popup3/PopupPanel/MarginContainer/VBoxContainer/BtnCancelar" to="Popup3" method="_on_btn_cancelar_pressed"]
+[connection signal="pressed" from="BtnSalir" to="." method="_on_btn_salir_pressed"]
+[connection signal="pressed" from="ButtonTutorial" to="." method="_on_button_tutorial_pressed"]

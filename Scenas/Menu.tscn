@@ -126,34 +126,55 @@ texture = ExtResource("4_2dvg7")
 layout_mode = 0
 offset_left = 204.00002
 offset_top = 114.0
-offset_right = 437.88007
+offset_right = 439.0919
 offset_bottom = 251.0
 scale = Vector2(1.6504186, 1.408)
 
-[node name="Label" type="Label" parent="PanelContenido/VBoxContainer" unique_id=366443930]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContenido/VBoxContainer" unique_id=14310076]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContenido/VBoxContainer/HBoxContainer" unique_id=366443930]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Musica General"
+
+[node name="LabelMaster" type="Label" parent="PanelContenido/VBoxContainer/HBoxContainer" unique_id=1181259604]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="SliderMaster" type="HSlider" parent="PanelContenido/VBoxContainer" unique_id=1581233142]
 layout_mode = 2
 max_value = 1.0
 step = 0.05
 
-[node name="Label2" type="Label" parent="PanelContenido/VBoxContainer" unique_id=1669286586]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContenido/VBoxContainer" unique_id=427769545]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PanelContenido/VBoxContainer/HBoxContainer2" unique_id=1669286586]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Musica"
+
+[node name="LabelMusica" type="Label" parent="PanelContenido/VBoxContainer/HBoxContainer2" unique_id=746869863]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="SliderMusica" type="HSlider" parent="PanelContenido/VBoxContainer" unique_id=2102874688]
 layout_mode = 2
 max_value = 1.0
 step = 0.05
 
-[node name="Label3" type="Label" parent="PanelContenido/VBoxContainer" unique_id=1084019067]
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContenido/VBoxContainer" unique_id=1516250402]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="PanelContenido/VBoxContainer/HBoxContainer3" unique_id=1084019067]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "SFX"
+
+[node name="LabelSFX" type="Label" parent="PanelContenido/VBoxContainer/HBoxContainer3" unique_id=153170990]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="SliderSFX" type="HSlider" parent="PanelContenido/VBoxContainer" unique_id=1889183334]
 layout_mode = 2
