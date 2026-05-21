@@ -21,7 +21,9 @@ func _ready():
 			"p2_name": {"data_type": "text"},
 			"money": {"data_type": "float"},
 			"day": {"data_type": "int"},
-			"reputation": {"data_type": "float"}
+			"reputation": {"data_type": "float"},
+			"cantidad_estrellas": {"data_type": "int"}, # Nueva columna
+			"select_dificult": {"data_type": "int"}      # Nueva columna (0 o 1)
 		}
 		db.create_table("save_slots", table_dict)
 		_sync_db_web()
@@ -46,7 +48,7 @@ func obtener_datos_slot(index: int) -> Dictionary:
 	return {}
 
 # --- GUARDAR / CREAR NUEVA PARTIDA ---
-func guardar_nueva_partida(index: int, p1: String, p2: String):
+func guardar_nueva_partida(index: int, p1: String, p2: String, estrellas: int, manual: int):
 	# Preparamos los datos
 	var row = {
 		"id": index,
@@ -54,7 +56,9 @@ func guardar_nueva_partida(index: int, p1: String, p2: String):
 		"p2_name": p2 if p2 != "" else "N/A",
 		"money": GameManager.dinero_actual,
 		"day": GameManager.dia_actual,
-		"reputation": 0.0
+		"reputation": float(estrellas * 50), # Inicializamos la reputación según las estrellas elegidas
+		"cantidad_estrellas": estrellas,
+		"select_dificult": manual
 	}
 	
 	# Verificamos si el slot ya existe

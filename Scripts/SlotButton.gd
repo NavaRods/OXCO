@@ -2,6 +2,8 @@ extends Button
 
 @export var slot_index: int = 1
 @export var boton_borrar_vinculado: Button 
+@export var contenedor_estrellas: HBoxContainer
+@export var estrellas_recurso: AnimatedSprite2D
 
 # Referencia al nuevo Popup (Asegúrate de que la ruta sea correcta)
 @onready var popup_confirmar = $"../../../ConfirmationDialog"
@@ -44,7 +46,7 @@ func _ready():
 
 func _on_btn_borrar_pressed():
 	GameManager.slot_a_borrar = slot_index
-	popup_confirmar.dialog_text = "¿Estás seguro de que quieres renunciar al progreso de la CAJA " + str(slot_index) + "?"
+	popup_confirmar.dialog_text = "¿Estas seguro de que quieres renunciar al progreso de la CAJA " + str(slot_index) + "?"
 	popup_confirmar.popup_centered()
 	click.play()
 
@@ -68,9 +70,13 @@ func actualizar_info_visual():
 	var estilo = StyleBoxFlat.new()
 	var estilo_hover = StyleBoxFlat.new()
 	
+	if contenedor_estrellas:
+		for child in contenedor_estrellas.get_children():
+			child.queue_free()
+	
 	if datos == null or datos.is_empty():
 		# --- ESTILO SLOT VACÍO ---
-		text = "\n\n➕\nNUEVA PARTIDA\n(CAJA " + str(slot_index) + ")"
+		text = "\n\n+\nNUEVA PARTIDA\n(CAJA " + str(slot_index) + ")"
 		
 		# (Configuración de estilo vacío)
 		estilo.bg_color = Color(0.2, 0.2, 0.2, 0.5)
@@ -80,43 +86,36 @@ func actualizar_info_visual():
 		
 		add_theme_color_override("font_color", Color(0.7, 0.7, 0.7))
 		if boton_borrar_vinculado: boton_borrar_vinculado.hide()
+		if contenedor_estrellas: contenedor_estrellas.hide()
 	else:
+		if contenedor_estrellas: contenedor_estrellas.show()
 		# --- EXTRAER DATOS DE TU TABLA ---
-		var nombre = str(datos.get("p1_name", "---")).to_upper()
+		var nombre_completo = str(datos.get("p1_name", "---")).to_upper()
+		var nombre = nombre_completo if nombre_completo.length() <= 6 else nombre_completo.left(6) + ".."
 		var p2_name = str(datos.get("p2_name", "N/A"))
 		var dia = str(datos.get("day", 1))
 		var dinero = str(snapped(datos.get("money", 0), 0.01))
 		var reputacion = datos.get("reputation", 0.0) # Nota: revisa si en tu DB es 'reputatin' por el typo que pusiste o 'reputation'
 		
 		# --- LÓGICA DE JUGADORES (Basado en p2_name) ---
-		var texto_jugadores = ""
-		if p2_name == "N/A":
-			texto_jugadores = "👤 SOLO"
-		else:
-			texto_jugadores = "👥 COOP"
+		var texto_jugadores = "MODO: SOLO" if p2_name == "N/A" else "MODO: COOP"
 		
 		# --- LÓGICA DE ESTRELLAS Y DIFICULTAD ---
-		var estrellas = int(clamp(reputacion / 50.0, 0, 5))
-		var dificultad_texto = ""
-		var iconos_estrellas = ""
+		var cantidad_estrellas = int(clamp(reputacion / 50.0, 0, 5))
+		var dificultad_texto = "NORMAL"
+		if cantidad_estrellas >= 3 and cantidad_estrellas <= 4: dificultad_texto = "POPULAR"
+		elif cantidad_estrellas >= 5: dificultad_texto = "A LO LOCO"
 		
-		for i in range(5):
-			iconos_estrellas += "★" if i < estrellas else "☆"
-
-		if estrellas <= 2:
-			dificultad_texto = "NORMAL"
-		elif estrellas <= 4:
-			dificultad_texto = "POPULAR"
-		else:
-			dificultad_texto = "A LO LOCO"
-
+		_generar_estrellas_visuales(cantidad_estrellas)
+		
 		# --- CONSTRUCCIÓN DEL TEXTO ---
 		text = "CAJA " + nombre + "\n"
-		text += "━━━━━━━━━━━━━\n"
+		text += "___________\n"
 		text += texto_jugadores + "\n"
-		text += "☀️ DÍA: " + dia + "\n"
-		text += "💰 $" + dinero + "\n"
-		text += iconos_estrellas + "\n[" + dificultad_texto + "]\n"
+		text += "DIA: " + dia + "\n"
+		text += "$" + dinero + "\n"
+		text += "\n[                  ]" 
+		text += "\n[" + dificultad_texto + "]\n"
 
 		# --- CONFIGURACIÓN DE ESTILO ---
 		estilo.bg_color = Color(0.15, 0.45, 0.25) 
@@ -135,6 +134,31 @@ func actualizar_info_visual():
 	add_theme_stylebox_override("normal", estilo)
 	add_theme_stylebox_override("hover", estilo_hover)
 	add_theme_stylebox_override("pressed", estilo)
+
+func _generar_estrellas_visuales(cantidad_llenas: int):
+	if not contenedor_estrellas or not estrellas_recurso: return
+	
+	# Ajustes visuales (puedes tocarlos según tu diseño)
+	var tamaño_celda = Vector2(25, 25) 
+	var escala_visual = Vector2(0.06, 0.06) 
+
+	for i in range(1, 6):
+		var wrapper = Control.new()
+		wrapper.custom_minimum_size = tamaño_celda
+		
+		var estrella_nueva = AnimatedSprite2D.new()
+		estrella_nueva.sprite_frames = estrellas_recurso.sprite_frames
+		estrella_nueva.position = tamaño_celda / 2
+		estrella_nueva.scale = escala_visual
+		
+		wrapper.add_child(estrella_nueva)
+		contenedor_estrellas.add_child(wrapper)
+
+		if i <= cantidad_llenas:
+			estrella_nueva.play("llena")
+		else:
+			estrella_nueva.play("vacia")
+			estrella_nueva.modulate.a = 0.5 # Un poco transparente la vacía
 
 func _on_pressed():
 	if GameManager: GameManager.slot_seleccionado = slot_index

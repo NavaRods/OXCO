@@ -214,7 +214,7 @@ func mostrar_feedback_visual(texto: String, color: Color):
 func cobrar_exitoso(monto: float, es_buena_resena: bool):
 	# Si fue una buena reseña (menos del 50% de descuento)
 	if es_buena_resena:
-		mostrar_feedback_visual("⭐ +1 Reseña\n+$" + str(snapped(monto, 0.01)), Color.GOLD)
+		mostrar_feedback_visual("+1 Reseña\n+$" + str(snapped(monto, 0.01)), Color.GOLD)
 	else:
 		mostrar_feedback_visual("+$" + str(snapped(monto, 0.01)), Color.SPRING_GREEN)
 

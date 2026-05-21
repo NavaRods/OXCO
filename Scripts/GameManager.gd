@@ -20,6 +20,8 @@ var niveles_suciedad_acumulados: int = 0
 var total_dinero_multas: int = 0
 var clientes_atendidos_exito: int = 0
 var reputacion_total: float = 0.0 # Persistente entre días
+var estrellas_seleccionadas: int = 0
+var dificultad_manual: int = 0 # 0 no, 1 sí
 
 # Reloj de la Jornada (El que usará la Tienda)
 var reloj_jornada_horas: int = 8
@@ -33,6 +35,8 @@ func cargar_partida(slot):
 		dinero_actual = datos["money"]
 		dia_actual = datos["day"]
 		reputacion_total = datos["reputation"]
+		estrellas_seleccionadas = datos.get("cantidad_estrellas", 0)
+		dificultad_manual = datos.get("select_dificult", 0)
 		
 		# --- CAMBIO AQUÍ: Determinamos si es un solo jugador según el nombre guardado ---
 		if p2_actual == "N/A" or p2_actual == "":

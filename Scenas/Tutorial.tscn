@@ -240,7 +240,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Cobro" type="Panel" parent="." unique_id=335112893]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -276,6 +275,16 @@ autoplay = true
 expand = true
 loop = true
 
+[node name="Label2" type="Label" parent="Cobro" unique_id=200032233]
+layout_mode = 0
+offset_left = 499.0
+offset_top = 447.0
+offset_right = 539.0
+offset_bottom = 479.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "~"
+
 [node name="Label" type="Label" parent="Cobro" unique_id=437199732]
 layout_mode = 0
 offset_left = 154.0
@@ -289,7 +298,7 @@ text = "Acercate a la caja y preciona la tecla
 de interaccion
 Los NPC tienen una barra de paciencia 
 si la paciencia llega a cero el cliente se 
-ira y resiviras una mala reseña"
+ira y resiviras una mala resena"
 vertical_alignment = 1
 
 [node name="Sprite2D5" type="Sprite2D" parent="Cobro" unique_id=1665360109]
@@ -386,6 +395,7 @@ region_enabled = true
 region_rect = Rect2(3.8255916, 33.53603, 24.53379, 12.88261)
 
 [node name="AlertaAgua" type="Panel" parent="." unique_id=231196073]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
