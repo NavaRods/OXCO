@@ -12,6 +12,7 @@
 [ext_resource type="VideoStream" uid="uid://d05ccmmabow2" path="res://Resourse/Gifs/VideoTutorial/Reparacion_Agua_Player1.ogv" id="10_tbq5m"]
 [ext_resource type="VideoStream" uid="uid://bpr5hm7iw1irh" path="res://Resourse/Gifs/VideoTutorial/Reparacion_Agua_Player2.ogv" id="11_dc5rv"]
 [ext_resource type="Texture2D" uid="uid://bc8yp3hwtivgk" path="res://Sprites/button UI.png" id="12_8jw0i"]
+[ext_resource type="AudioStream" uid="uid://cuhtkw536kr18" path="res://Sounds/SonidosInternos/Musica_Tienda.ogg" id="13_01wmx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gog75"]
 
@@ -865,6 +866,10 @@ scale = Vector2(3, 3)
 theme_override_styles/normal = SubResource("StyleBoxTexture_0xk8j")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8jw0i")
 theme_override_styles/hover = SubResource("StyleBoxTexture_r5jub")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=40881633]
+stream = ExtResource("13_01wmx")
+autoplay = true
 
 [connection signal="pressed" from="BtnSiguiente" to="." method="_on_btn_siguiente_pressed"]
 [connection signal="pressed" from="BtnAtras" to="." method="_on_btn_atras_pressed"]

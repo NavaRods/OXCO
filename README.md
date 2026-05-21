@@ -92,4 +92,8 @@ Este proyecto es un simulador de gestión y estrategia desarrollado en Godot 4.6
 - https://limezu.itch.io/moderninteriors
 - https://dreammixgames.itch.io/keyboard-keys-for-ui
 - https://axulart.itch.io/small-8-direction-characters
+<<<<<<< HEAD
 - Uso de Inteligencia Artificial (Gemini) para la creacion de algunos Sprites Utilizados en el desarrollo
+=======
+- Uso de Inteligencia Artificial (Gemini) para la creacion de algunos Sprites Utilizados en el desarrollo
+>>>>>>> 56ca35a5ef5d5d40fc307cdb56a30d1fefb99d51

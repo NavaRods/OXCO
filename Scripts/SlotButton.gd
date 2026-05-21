@@ -13,7 +13,6 @@ var estilo_vacio: StyleBoxFlat
 
 func _ready():
 	add_to_group("botones_slots")
-	
 	# Configuración de Estilo Ocupado (Verde o Azul con bordes)
 	estilo_ocupado = StyleBoxFlat.new()
 	estilo_ocupado.bg_color = Color("2e3c50") # Un azul oscuro elegante

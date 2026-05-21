@@ -19,6 +19,7 @@ extends CanvasLayer
 var indice_actual = 0
 
 func _ready():
+	$AudioStreamPlayer2D.play()
 	# 1. Ocultar todos los paneles al iniciar
 	for p in paginas:
 		p.hide()
