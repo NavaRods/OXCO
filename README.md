@@ -38,6 +38,10 @@ El sistema de controles ha sido diseñado para una interaccion fluida y centrada
 
 Motor de Desarrollo: Godot Engine 4.6 (GDScript).
 
+**API**
+
+Se utilizo la API de "https://jsonplaceholder.typicode.com/posts/" esta simula una Base de Datos de donde se extrae informacion de el titulo ("title") de un JSON, segun la longitud de la palabra es la cantidad de dinero con el que cuenta el NPC y con lo que puede pagar, esta se ve afectada si el NPC detecta suciedad o si no se le atiende en Caja.
+
 **Inteligencia Artificial de NPCs:**
 
 - Navegación por Waypoints: Implementación de rutas predefinidas y aleatorias mediante nodos de posición para simular el flujo de clientes dentro de la tienda.
@@ -48,6 +52,7 @@ Motor de Desarrollo: Godot Engine 4.6 (GDScript).
 
 [![Gameplay OXCO](https://img.youtube.com/vi/IkbZFVv3Lyw/0.jpg)](https://www.youtube.com/watch?v=IkbZFVv3Lyw)
 <img width="1254" height="1254" alt="Logo OXCO" src="https://github.com/user-attachments/assets/37776d93-9d95-4191-9beb-5ea65dd5da31" />
+<img width="793" height="795" alt="image" src="https://github.com/user-attachments/assets/4d13cf13-23c5-4446-a973-2ab2febdd348" />
 <img width="794" height="797" alt="image" src="https://github.com/user-attachments/assets/97e2b7f3-b058-48f0-835f-03de1dcb8df4" />
 <img width="791" height="792" alt="image" src="https://github.com/user-attachments/assets/d3b41ab3-d5c7-4afc-8ed4-421e7b7ff35d" />
 <img width="789" height="792" alt="image" src="https://github.com/user-attachments/assets/248f5919-ec19-4e4e-9795-e845dea46beb" />
@@ -60,7 +65,7 @@ Motor de Desarrollo: Godot Engine 4.6 (GDScript).
 
 *Datos*
 
-Este proyecto es un simulador de gestión y estrategia desarrollado en Godot 4.6, desarrollado por Carlos Nava Rodríguez y César Iván Nava Topete como proyecto final de la Materia de Pragramacion 3D impartido por el Profesor Jose Luis David Bonilla Carranza de la Universidad de Guadalajara en el Centro Universitario de Ciencias Exactas e Ingenierías. 
+Este proyecto es un simulador de gestión y estrategia desarrollado en Godot 4.6, desarrollado por Carlos Nava Rodríguez y César Iván Nava Topete como proyecto final de la Materia de Pragramacion 3D impartido por el Dr. Jose Luis David Bonilla Carranza de la Universidad de Guadalajara en el Centro Universitario de Ciencias Exactas e Ingenierías. 
 
 *Musica y SFX*
 
