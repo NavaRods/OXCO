@@ -6,7 +6,8 @@ extends Node
 # Para evitar el error de "shadowing", llamaremos a nuestra variable 'db_instancia'.
 
 var db: SQLite # Usamos el tipo de dato nativo del plugin
-var db_path: String = "user://tienda_database.db"
+# var db_path: String = "user://tienda_database.db" # Estoy usando esto para ver la tabla de datos
+var db_path: String = "user://tienda_db.save"
 
 func _ready():
 	# Inicializar la base de datos usando la clase global del plugin
@@ -23,7 +24,11 @@ func _ready():
 			"day": {"data_type": "int"},
 			"reputation": {"data_type": "float"},
 			"cantidad_estrellas": {"data_type": "int"}, # Nueva columna
-			"select_dificult": {"data_type": "int"}      # Nueva columna (0 o 1)
+			"select_dificult": {"data_type": "int"},      # Nueva columna (0 o 1)
+			"hora": {"data_type": "int"},
+			"minutos": {"data_type": "int"},
+			"luz_activa": {"data_type": "int"}, # 1 para true, 0 para false
+			"agua_activa": {"data_type": "int"}
 		}
 		db.create_table("save_slots", table_dict)
 		_sync_db_web()
@@ -54,11 +59,17 @@ func guardar_nueva_partida(index: int, p1: String, p2: String, estrellas: int, m
 		"id": index,
 		"p1_name": p1,
 		"p2_name": p2 if p2 != "" else "N/A",
-		"money": GameManager.dinero_actual,
-		"day": GameManager.dia_actual,
+		# "money": GameManager.dinero_actual,
+		# "day": GameManager.dia_actual,
+		"money": 0.0,
+		"day": 1,
 		"reputation": float(estrellas * 50), # Inicializamos la reputación según las estrellas elegidas
 		"cantidad_estrellas": estrellas,
-		"select_dificult": manual
+		"select_dificult": manual,
+		"hora": 8, # Hora de inicio por defecto
+		"minutos": 0,
+		"luz_activa": 1,
+		"agua_activa": 1
 	}
 	
 	# Verificamos si el slot ya existe
@@ -77,8 +88,22 @@ func guardar_nueva_partida(index: int, p1: String, p2: String, estrellas: int, m
 
 # --- GUARDAR PROGRESO (Fin de día o Resultados) ---
 # Esta función es la que llamarás desde el GameManager al final del día
-func actualizar_progreso(index: int, dinero: float, dia: int, reputacion: float):
+'''func actualizar_progreso(index: int, dinero: float, dia: int, reputacion: float):
 	var query = "UPDATE save_slots SET money = %f, day = %d, reputation = %f WHERE id = %d;" % [dinero, dia, reputacion, index]
+	db.query(query)
+	_sync_db_web()
+'''
+func actualizar_progreso(index: int):
+	var query = "UPDATE save_slots SET money = %f, day = %d, reputation = %f, hora = %d, minutos = %d, luz_activa = %d, agua_activa = %d WHERE id = %d;" % [
+		GameManager.dinero_actual, 
+		GameManager.dia_actual, 
+		GameManager.reputacion_total,
+		GameManager.reloj_jornada_horas,
+		GameManager.reloj_jornada_minutos,
+		1 if GameManager.luz_global else 0,
+		1 if GameManager.agua_global else 0,
+		index
+	]
 	db.query(query)
 	_sync_db_web()
 

@@ -43,8 +43,8 @@ func _ready():
 	
 	btn_config.pressed.connect(_on_boton_config_pressed)
 	GameManager.clientes_perdidos = 0
-	GameManager.reloj_jornada_horas = 8
-	GameManager.reloj_jornada_minutos = 0
+	# GameManager.reloj_jornada_horas = 8
+	# GameManager.reloj_jornada_minutos = 0
 	GameManager.ganancias_del_dia = 0 # Reset ganancias al empezar el día
 	GameManager.juego_pausado = false
 	GameManager.total_dinero_multas = 0

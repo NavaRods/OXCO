@@ -25,6 +25,8 @@ var reparar_luz = [
 ]
 
 func _ready():
+	await get_tree().process_frame
+	
 	if filtro_luz: filtro_luz.visible = false
 	
 	# Inicializamos el estado de los nuevos elementos
@@ -35,8 +37,24 @@ func _ready():
 			fuga.visible = false
 			fuga.stop() # Aseguramos que no consuman recursos si no se ven
 			
-	esperar_averia_luz()
-	esperar_averia_agua()
+	luz_activa = GameManager.luz_global
+	agua_activa = GameManager.agua_global
+	
+	print(luz_activa, " : LUZ GLOBAL")
+	
+	if not luz_activa:
+		averiar_luz(true) 
+	else:
+		esperar_averia_luz()
+
+	if not agua_activa:
+		averiar_agua(true)
+	else:
+		esperar_averia_agua()
+	'''if not agua_activa:
+		averiar_agua()
+	else:
+		esperar_averia_agua()'''
 
 # --- TEMPORIZADORES Y AVERÍAS (Sin cambios) ---
 func esperar_averia_luz():
@@ -59,17 +77,20 @@ func esperar_averia_agua():
 		await get_tree().create_timer(2.0, false).timeout
 		esperar_averia_agua()
 
-func averiar_luz():
-	if not luz_activa: return # Evitar duplicados
+func averiar_luz(forzar: bool = false):
+	if not luz_activa and not forzar: print("Saliendo de Averiar Luz"); return # Evitar duplicados
 	luz_activa = false
+	GameManager.luz_global = false
 	if filtro_luz: filtro_luz.visible = true
+	print("Se mostro el filtro de luz")
 	if luz_hogera: luz_hogera.enabled = false 
 	$"../SonidoLuzFuera".play()
 	ui.mostrar_falla("LUZ")
 
-func averiar_agua():
-	if not agua_activa: return
+func averiar_agua(forzar: bool = false):
+	if not agua_activa and not forzar: return
 	agua_activa = false
+	GameManager.agua_global = false
 	ui.mostrar_falla("AGUA")
 	for fuga in fugas:
 		if fuga:
@@ -173,6 +194,7 @@ func finalizar_reparacion(tipo: String):
 	
 	if tipo == "LUZ":
 		luz_activa = true
+		GameManager.luz_global = true
 		reparando_luz_loop = false
 		sfx_reparar_luz.stop()
 		if filtro_luz: filtro_luz.visible = false 
@@ -180,6 +202,7 @@ func finalizar_reparacion(tipo: String):
 		esperar_averia_luz() 
 	else:
 		agua_activa = true
+		GameManager.agua_global = true
 		$"../SonidoFuga".stop()
 		$"../SonidoReparacionAgua".stop()
 		

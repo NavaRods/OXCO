@@ -20,9 +20,21 @@ extends Control
 
 func _ready():
 	_limpiar_ui()
+	await get_tree().process_frame
 	actualizar_datos_generales()
 	if fuente_luz: fuente_luz.hide()
 	if fuente_agua: fuente_agua.hide()
+	
+	if not GameManager.luz_global:
+		mostrar_falla("LUZ")
+	if not GameManager.agua_global:
+		mostrar_falla("AGUA")
+
+# Dentro de InterfazUsuario.gd
+func _process(_delta):
+	# Esto mantendrá el dinero y el reloj actualizados en tiempo real
+	label_dinero.text = "$%.2f" % GameManager.dinero_actual
+	label_horario.text = "%02d:%02d" % [GameManager.reloj_jornada_horas, GameManager.reloj_jornada_minutos]
 
 func _limpiar_ui():
 	notif_luz.text = ""
@@ -32,7 +44,7 @@ func _limpiar_ui():
 	container_agua.hide()
 
 func actualizar_datos_generales():
-	label_dia.text = "DÍA: " + str(GameManager.dia_actual)
+	label_dia.text = "DIA: " + str(GameManager.dia_actual)
 	label_horario.text = "%02d:%02d" % [GameManager.reloj_jornada_horas, GameManager.reloj_jornada_minutos]
 	label_dinero.text = "$%.2f" % GameManager.dinero_actual
 	

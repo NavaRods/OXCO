@@ -8,6 +8,8 @@ extends CanvasLayer
 @onready var lbl_musica = $Panel/VBoxContainer/HBoxContainer2/LabelMusica
 @onready var lbl_sfx = $Panel/VBoxContainer/HBoxContainer3/LabelSFX
 
+var config_path = "user://settings.cfg"
+
 func _ready():
 	# Conectar señal para sincronizar cada vez que se abra
 	self.visibility_changed.connect(_sincronizar_valores)
@@ -17,6 +19,7 @@ func _ready():
 	slider_musica.value_changed.connect(_on_volume_changed.bind("Musica"))
 	slider_sfx.value_changed.connect(_on_volume_changed.bind("SFX"))
 	
+	_cargar_configuracion_audio()
 	_sincronizar_valores()
 	hide()
 
@@ -40,6 +43,8 @@ func _on_volume_changed(value: float, bus_name: String):
 	AudioServer.set_bus_volume_db(bus_index, linear_to_db(value))
 	AudioServer.set_bus_mute(bus_index, value == 0)
 	_actualizar_labels_pausa(bus_name, value)
+	# Guardamos el ajuste de audio cada vez que se mueve el slider
+	_guardar_configuracion_audio()
 
 func _actualizar_labels_pausa(bus_name: String, valor: float):
 	var porcentaje = str(round(valor * 100)) + "%"
@@ -48,6 +53,23 @@ func _actualizar_labels_pausa(bus_name: String, valor: float):
 		"Musica": lbl_musica.text = porcentaje
 		"SFX": lbl_sfx.text = porcentaje
 
+func _guardar_configuracion_audio():
+	var config = ConfigFile.new()
+	config.set_value("Audio", "master", slider_master.value)
+	config.set_value("Audio", "musica", slider_musica.value)
+	config.set_value("Audio", "sfx", slider_sfx.value)
+	config.save(config_path)
+
+func _cargar_configuracion_audio():
+	var config = ConfigFile.new()
+	if config.load(config_path) == OK:
+		var m = config.get_value("Audio", "master", 1.0)
+		var mu = config.get_value("Audio", "musica", 1.0)
+		var s = config.get_value("Audio", "sfx", 1.0)
+		
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(m))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Musica"), linear_to_db(mu))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(s))
 # --- BOTONES ---
 
 func _on_replay_pressed():
@@ -62,8 +84,17 @@ func _on_replay_pressed():
 		btn.show()
 
 func _on_salir_menu_pressed():
-	# IMPORTANTE: Despausar antes de cambiar de escena
+	# 1. GUARDAR PARTIDA ANTES DE SALIR
+	if DatabaseManager:
+		# Llamamos a la función que actualiza todo (dinero, hora, servicios)
+		DatabaseManager.actualizar_progreso(GameManager.slot_seleccionado)
+		print("Partida guardada automáticamente al salir.")
+	
+	# 2. LIMPIAR ESTADO
 	get_tree().paused = false
+	GameManager.juego_pausado = false
+	
+	# 3. CAMBIAR ESCENA
 	get_tree().change_scene_to_file("res://Scenas/Menu.tscn")
 
 # Lógica para abrir/cerrar con la tecla ESC

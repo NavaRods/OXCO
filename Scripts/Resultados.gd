@@ -67,10 +67,13 @@ func animar_ticket():
 	print("Total de clientes Perdidos: ", perdidos)
 	print("Balance de reputacion: ", balance_reputacion)
 	
+	var almacen_reputacion = GameManager.reputacion_total
+	
 	if balance_reputacion >= 0:
 		# GANANCIA: Por cada cliente neto positivo, gana $10 (ajusta el valor a tu gusto)
 		monto_resenas = balance_reputacion * 10.0
 		GameManager.reputacion_total += atendidos
+		if GameManager.dificultad_manual: GameManager.reputacion_total = almacen_reputacion
 	else:
 		# PÉRDIDA: Si hay más perdidos que atendidos, aplicamos penalización
 		# Usamos tu lógica original de tasas pero basada en el déficit
@@ -78,6 +81,7 @@ func animar_ticket():
 		var tasa = 0.05 if deficit <= 5 else (0.10 if deficit <= 9 else 0.15)
 		monto_resenas = -(deficit * tasa * 10.0) # Valor negativo para el balance
 		GameManager.reputacion_total -= perdidos
+		if GameManager.dificultad_manual: GameManager.reputacion_total = almacen_reputacion
 		if GameManager.reputacion_total < 0: GameManager.reputacion_total = 0
 	
 	print("REPUTACION ACTUAL: ", GameManager.reputacion_total)
@@ -97,7 +101,7 @@ func animar_ticket():
 	await mostrar_linea(lbl_dia, "" + str(GameManager.dia_actual))
 	
 	lbl_ventas.add_theme_color_override("font_color", Color.SPRING_GREEN)
-	await mostrar_linea(lbl_ventas, "$" + str(snapped(ventas, 0.01)))
+	await mostrar_linea(lbl_ventas, "$" + str(snapped(GameManager.dinero_actual, 0.01)))
 	
 	# Gastos Fijos (Rojo)
 	lbl_agua.add_theme_color_override("font_color", Color.RED)
@@ -139,8 +143,10 @@ func animar_ticket():
 		# 1. ACTUALIZAMOS LOS DATOS EN EL MANAGER ANTES DE GUARDAR
 		GameManager.dinero_actual = balance_final
 		GameManager.dia_actual += 1  # <--- SUBIMOS EL DÍA AQUÍ
-		
-		
+		GameManager.reloj_jornada_horas = 8
+		GameManager.reloj_jornada_minutos = 0
+		GameManager.luz_global = true
+		GameManager.agua_global = true
 		
 		# 2. GUARDAMOS EN LA DB (Ahora se guardará con el nuevo día y dinero acumulado)
 		guardar_progreso_en_db()
@@ -156,9 +162,7 @@ func animar_ticket():
 		await aparecer_sello(sello_derrota, escala_original_der)
 		
 		# Reset de datos (se aplicará cuando cree partida nueva o reintente)
-		GameManager.dinero_actual = 0
-		GameManager.dia_actual = 1
-		GameManager.reputacion_total = 0
+		GameManager.resetear_a_estado_inicial()
 		
 		guardar_progreso_en_db()
 		# NO se sobreescriba con el fracaso y pueda reintentar.
@@ -192,13 +196,13 @@ func sacudir_pantalla():
 
 func guardar_progreso_en_db():
 	# Añadimos la reputación al final de la llamada
-	DatabaseManager.actualizar_progreso(
+	'''DatabaseManager.actualizar_progreso(
 		GameManager.slot_seleccionado, 
 		GameManager.dinero_actual, 
 		GameManager.dia_actual,
 		GameManager.reputacion_total  # <--- Este es el dato que faltaba
-	)
-	
+	)'''
+	DatabaseManager.actualizar_progreso(GameManager.slot_seleccionado)
 	if OS.has_feature("web"):
 		JavaScriptBridge.eval("FS.syncfs(false, function (err) { });")
 
